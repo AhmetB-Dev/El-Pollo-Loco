@@ -1,24 +1,28 @@
 class World {
   canvas;
   ctx;
+  input;
 
   clouds = [new Cloud()];
   backgroundObjects = [
-    //  background layers
     new BackgroundObject("assets/img_pollo_locco/img/5_background/layers/air.png", 0, 0),
     new BackgroundObject("assets/img_pollo_locco/img/5_background/layers/3_third_layer/1.png", 0, 0),
     new BackgroundObject("assets/img_pollo_locco/img/5_background/layers/2_second_layer/1.png", 0, 0),
     new BackgroundObject("assets/img_pollo_locco/img/5_background/layers/1_first_layer/1.png", 0, 0),
   ];
-
   character = new Character();
   enemies = [new Chicken(), new Chicken(), new Chicken()];
 
-  constructor(canvas) {
+  constructor(canvas, input) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
+    this.input = input;
     this.draw();
-    this.addToMap();
+    this.setWorld();
+  }
+
+  setWorld() {
+    this.character.world = this;
   }
 
   draw() {
