@@ -17,6 +17,19 @@ class Character extends MovableObject {
     "assets/img_pollo_locco/img/2_character_pepe/1_idle/idle/I-10.png",
   ];
 
+  IMAGES_LONG_IDLE = [
+    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-11.png",
+    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-12.png",
+    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-13.png",
+    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-14.png",
+    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-15.png",
+    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-16.png",
+    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-17.png",
+    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-18.png",
+    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-19.png",
+    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-20.png",
+  ];
+
   IMAGES_WALK = [
     "assets/img_pollo_locco/img/2_character_pepe/2_walk/W-21.png",
     "assets/img_pollo_locco/img/2_character_pepe/2_walk/W-22.png",
@@ -62,6 +75,7 @@ class Character extends MovableObject {
 
   loadAssets() {
     this.animationImage(this.IMAGES_IDLE);
+    this.animationImage(this.IMAGES_LONG_IDLE);
     this.animationImage(this.IMAGES_WALK);
     this.animationImage(this.IMAGES_JUMP);
     this.animationImage(this.IMAGES_HURT);
@@ -70,6 +84,7 @@ class Character extends MovableObject {
 
   animation() {
     this.startIdleAnimation();
+    // this.startLongIdleAnimation();
     this.startWalkAnimation();
     this.startJumpAnimation();
     this.startHurtAnimation();
@@ -85,6 +100,15 @@ class Character extends MovableObject {
     }, 780);
   }
 
+  // startLongIdleAnimation() {
+  //   setInterval(() => {
+  //     let i = this.currentImage % this.IMAGES_LONG_IDLE.length;
+  //     let path = this.IMAGES_LONG_IDLE[i];
+  //     this.img = this.imageCache[path];
+  //     this.currentImage++;
+  //   }, 780);
+  // }
+
   startWalkAnimation() {
     this.walkRight();
     this.walkLeft();
@@ -92,24 +116,28 @@ class Character extends MovableObject {
 
   walkLeft() {
     setInterval(() => {
-      if (this.world.input.LEFT) {
+      if (this.world.input.LEFT && this.x >0) {
         this.moveLeft();
+        this.otherDirection = true;
         let i = this.currentImage % this.IMAGES_WALK.length;
         let path = this.IMAGES_WALK[i];
         this.img = this.imageCache[path];
         this.currentImage++;
       }
+      this.world.camera_x = -this.x + 100;
     }, 70);
   }
 
   walkRight() {
     setInterval(() => {
-      if (this.world.input.RIGHT) {
+      if (this.world.input.RIGHT && this.x < this.world.level.level_end) {
         this.moveRight();
+        this.otherDirection = false;
         let i = this.currentImage % this.IMAGES_WALK.length;
         let path = this.IMAGES_WALK[i];
         this.img = this.imageCache[path];
         this.currentImage++;
+        this.world.camera_x = -this.x;
       }
     }, 70);
   }

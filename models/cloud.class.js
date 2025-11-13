@@ -4,12 +4,19 @@ class Cloud extends MovableObject {
   height = 300;
 
   constructor() {
-    super().loadImage("assets/img_pollo_locco/img/5_background/layers/4_clouds/1.png");
-    this.x = Math.random() * 500;
-
-    this.animate();
+    super().loadImage(
+      "assets/img_pollo_locco/img/5_background/layers/4_clouds/1.png",
+      "assets/img_pollo_locco/img/5_background/layers/4_clouds/2.png"
+    );
+    this.spawnCloudsRandom();
+    this.animationCloud();
   }
-  animate() {
-    this.moveLeft;
+
+  spawnCloudsRandom() {
+    this.x = Math.random() * 500;
+  }
+
+  animationCloud() {
+    this.moveLeft();
   }
 }
