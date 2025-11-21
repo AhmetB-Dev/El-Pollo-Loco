@@ -16,7 +16,7 @@ class MovableObject {
   }
 
   showHitbox(ctx) {
-    if ((this instanceof Character || this instanceof Chicken, SmallChicken, Boss)) {
+    if (this instanceof Character || this instanceof Chicken) {
       ctx.beginPath();
       ctx.lineWidth = "3";
       ctx.strokeStyle = "red";
@@ -33,9 +33,9 @@ class MovableObject {
       }
     }, 1000 / 25);
   }
-  // MovableObject
+
   isAboveGround() {
-    return this.y < 155; // gleicher Wert wie Character.y am Boden
+    return this.y < 155;
   }
 
   loadImage(path) {
