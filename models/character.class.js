@@ -5,6 +5,13 @@ class Character extends MovableObject {
   y = 155;
   speed = 23;
 
+  offset = {
+    top: 23,
+    bottom: 32,
+    left: 422,
+    right: 233,
+  };
+
   IMAGES_IDLE = [
     "assets/img_pollo_locco/img/2_character_pepe/1_idle/idle/I-1.png",
     "assets/img_pollo_locco/img/2_character_pepe/1_idle/idle/I-2.png",
@@ -146,7 +153,21 @@ class Character extends MovableObject {
     }, 115);
   }
 
-  startHurtAnimation() {}
+  startHurtAnimation() {
+    setInterval(() => {
+      // if (this.hitHurt()) {
+      //   this.playAnimation(this.IMAGES_HURT);
+      // }
+    }, 200);
+  }
 
-  startDeadAnimation() {}
+  startDeadAnimation() {
+    setInterval(() => {
+      if (this.dead()) {
+        this.playAnimation(this.IMAGES_DEAD);
+      } else if (this.hitHurt()) {
+        this.playAnimation(this.IMAGES_HURT);
+      }
+    }, 200);
+  }
 }

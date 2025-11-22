@@ -10,6 +10,8 @@ class MovableObject {
   otherDiretion = false;
   speedY = 0;
   acceleration = 2.5;
+  energy = 100;
+  lastHit = 0;
 
   draw(ctx) {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
@@ -23,6 +25,34 @@ class MovableObject {
       ctx.rect(this.x, this.y, this.width, this.height);
       ctx.stroke();
     }
+  }
+
+  isColliding(movableObject) {
+    return (
+      this.x + this.width > movableObject.x &&
+      this.y + this.height > movableObject.y &&
+      this.x < movableObject.x + movableObject.width &&
+      this.y < movableObject.y + movableObject.height
+    );
+  }
+
+  hit() {
+    this.energy -= 20;
+    if (this.energy < 0) {
+      this.energy = 0;
+    } else {
+      this.lastHit = new Date().getTime();
+    }
+  }
+
+  hitHurt() {
+    let timepassed = new Date().getTime() - this.lastHit();
+    timepassed = timepassed / 1000;
+    return timepassed < 1.5;
+  }
+
+  dead() {
+    return this.energy == 0;
   }
 
   applyGravity() {
@@ -73,4 +103,11 @@ class MovableObject {
       this.x -= this.speed;
     }, 1000 / 60);
   }
+
+  offset = {
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  };
 }

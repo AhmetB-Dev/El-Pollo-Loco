@@ -15,11 +15,26 @@ class World {
     this.input = input;
     this.draw();
     this.setWorld();
+    this.checkCollisions();
   }
 
   setWorld() {
     this.character.world = this;
   }
+
+  checkCollisions() {
+    setInterval(() => {
+      this.level.enemies.forEach((enemy) => {
+        if (this.character.isColliding(enemy)) {
+          this.character.hit();
+          this.dead();
+          console.log("Character energy: ", this.character.energy);
+        }
+      });
+    }, 1000);
+  }
+
+  
 
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -65,13 +80,5 @@ class World {
   flipImageBack(movableObject) {
     movableObject.x = movableObject.x * -1;
     this.ctx.restore();
-  }
-  isColliding(movableObject) {
-    return (
-      this.x + this.width > movableObject.x &&
-      this.y + this.height > movableObject.y &&
-      this.x < movableObject.x + movableObject.width &&
-      this.y < movableObject.y + movableObject.height
-    );
   }
 }
