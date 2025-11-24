@@ -8,6 +8,7 @@ class World {
   character = new Character();
   otherDirection = false;
   camera_x = 0;
+  statusBar = new Statusbars();
 
   constructor(canvas, input) {
     this.ctx = canvas.getContext("2d");
@@ -27,26 +28,53 @@ class World {
       this.level.enemies.forEach((enemy) => {
         if (this.character.isColliding(enemy)) {
           this.character.hit();
-          this.dead();
           console.log("Character energy: ", this.character.energy);
         }
       });
     }, 1000);
-  }
 
-  
+    setInterval(() => {
+      this.level.coin.forEach((coin) => {
+        if (this.character.isColliding(coin)) {
+          coin.getItems();
+          console.log("Coins collected: ", coin.items);
+        }
+        for (let i = this.level.coin.length - 1; i >= 0; i--) {
+          const coin = this.level.coin[i];
+          if (this.character.isColliding(coin)) {
+            this.level.coin.splice(i, 1);
+          }
+        }
+      });
+    }, 100);
+
+    setInterval(() => {
+      this.level.bottels.forEach((bottel) => {
+        if (this.character.isColliding(bottel)) {
+          bottel.getItems();
+          console.log("Bottels collected: ", bottel.items);
+        }
+        for (let i = this.level.bottels.length - 1; i >= 0; i--) {
+          const bottel = this.level.bottels[i];
+          if (this.character.isColliding(bottel)) {
+            this.level.bottels.splice(i, 1);
+          }
+        }
+      });
+    }, 100);
+  }
 
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     this.ctx.translate(this.camera_x, 0);
-
     this.addObjectsToMap(this.level.backgroundObjects);
     this.addToMap(this.character);
     this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.level.coin);
     this.addObjectsToMap(this.level.bottels);
     this.addObjectsToMap(this.level.clouds);
+    this.addToMap(this.statusBar);
 
     this.ctx.translate(-this.camera_x, 0);
 

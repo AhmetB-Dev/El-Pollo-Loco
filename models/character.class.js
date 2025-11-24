@@ -6,10 +6,10 @@ class Character extends MovableObject {
   speed = 23;
 
   offset = {
-    top: 23,
-    bottom: 32,
-    left: 422,
-    right: 233,
+    top: 110,
+    left: 25,
+    right: 35,
+    bottom: 10,
   };
 
   IMAGES_IDLE = [
@@ -155,9 +155,9 @@ class Character extends MovableObject {
 
   startHurtAnimation() {
     setInterval(() => {
-      // if (this.hitHurt()) {
-      //   this.playAnimation(this.IMAGES_HURT);
-      // }
+      if (this.hitHurt()) {
+        this.playAnimation(this.IMAGES_HURT);
+      }
     }, 200);
   }
 
@@ -165,9 +165,9 @@ class Character extends MovableObject {
     setInterval(() => {
       if (this.dead()) {
         this.playAnimation(this.IMAGES_DEAD);
-      } else if (this.hitHurt()) {
-        this.playAnimation(this.IMAGES_HURT);
-      }
-    }, 200);
+      } //  else if (this.hitHurt()) {
+      //   this.playAnimation(this.IMAGES_HURT);
+      // }
+    }, 300);
   }
 }

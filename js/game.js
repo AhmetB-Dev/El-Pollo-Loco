@@ -9,6 +9,11 @@ function init() {
   console.log("mein character ist", world.character);
 }
 
+function startGame() {
+  document.getElementById("startScreen")
+    .classList.add("d-none");
+}
+
 window.addEventListener("keydown", (e) => {
   if (e.keyCode == 68) {
     input.RIGHT = true;
@@ -26,7 +31,7 @@ window.addEventListener("keydown", (e) => {
     input.SPACE = true;
   }
 
-  console.log(e);
+  // console.log(e);
 });
 window.addEventListener("keyup", (e) => {
   if (e.keyCode == 68) {
@@ -45,5 +50,5 @@ window.addEventListener("keyup", (e) => {
     input.SPACE = false;
   }
 
-  console.log(e);
+  // console.log(e);
 });

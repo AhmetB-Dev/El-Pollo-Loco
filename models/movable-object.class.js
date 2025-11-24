@@ -1,39 +1,33 @@
-class MovableObject {
-  x = 0;
-  y = 295;
-  img;
-  height = 130;
-  width = 100;
-  imageCache = {};
-  currentImage = 0;
+class MovableObject extends DrawableObject {
+
   speed = 0.15;
   otherDiretion = false;
   speedY = 0;
   acceleration = 2.5;
   energy = 100;
   lastHit = 0;
+  items = 0;
 
-  draw(ctx) {
-    ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-  }
 
-  showHitbox(ctx) {
-    if (this instanceof Character || this instanceof Chicken) {
-      ctx.beginPath();
-      ctx.lineWidth = "3";
-      ctx.strokeStyle = "red";
-      ctx.rect(this.x, this.y, this.width, this.height);
-      ctx.stroke();
-    }
-  }
-
-  isColliding(movableObject) {
+  
+  isColliding(mo) {
     return (
-      this.x + this.width > movableObject.x &&
-      this.y + this.height > movableObject.y &&
-      this.x < movableObject.x + movableObject.width &&
-      this.y < movableObject.y + movableObject.height
+      // rechte Seite von this > linke Seite von mo
+      this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
+      // linke Seite von this < rechte Seite von mo
+      this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
+      // untere Seite von this > obere Seite von mo
+      this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
+      // obere Seite von this < untere Seite von mo
+      this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom
     );
+  }
+
+  getItems() {
+    this.items += 1;
+    if (this.items > 5) {
+      this.items = 5;
+    }
   }
 
   hit() {
@@ -46,7 +40,7 @@ class MovableObject {
   }
 
   hitHurt() {
-    let timepassed = new Date().getTime() - this.lastHit();
+    let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
     return timepassed < 1.5;
   }
@@ -68,18 +62,6 @@ class MovableObject {
     return this.y < 155;
   }
 
-  loadImage(path) {
-    this.img = new Image();
-    this.img.src = path;
-  }
-
-  animationImage(array) {
-    array.forEach((path) => {
-      let img = new Image();
-      img.src = path;
-      this.imageCache[path] = img;
-    });
-  }
 
   playAnimation(images) {
     let i = this.currentImage % images.length;
@@ -106,8 +88,8 @@ class MovableObject {
 
   offset = {
     top: 0,
-    bottom: 0,
     left: 0,
     right: 0,
+    bottom: 0,
   };
 }

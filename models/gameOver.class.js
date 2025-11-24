@@ -1,6 +1,6 @@
 class GameOver extends World {
-  width = 72;
-  height = 48;
+  width = 90;
+  height = 90;
 
   GameOver_IMAGES = [
     "assets/img_pollo_locco/img/9_intro_outro_screens/game_over/game over!.png",
@@ -10,5 +10,15 @@ class GameOver extends World {
   ];
 
   constructor() {
+    super().loadImage(this.GameOver_IMAGES[0]);
   }
+
+  loadGameOverImages() {
+    this.animationImage(this.GameOver_IMAGES);
+  }
+
+  triggerGameOver() {
+    
+  }
+
 }

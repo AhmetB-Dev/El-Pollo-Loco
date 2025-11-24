@@ -2,8 +2,22 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 0;
+
+  background-image: url("../assets/img_pollo_locco/img/9_intro_outro_screens/start/startscreen_1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 canvas {
   background-color: black;
+}
+
+d.none {
+  display: none;
+}
+
+d.show {
+  display: block;
 }
