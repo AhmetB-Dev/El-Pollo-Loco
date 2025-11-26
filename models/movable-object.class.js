@@ -1,5 +1,4 @@
 class MovableObject extends DrawableObject {
-
   speed = 0.15;
   otherDiretion = false;
   speedY = 0;
@@ -8,8 +7,6 @@ class MovableObject extends DrawableObject {
   lastHit = 0;
   items = 0;
 
-
-  
   isColliding(mo) {
     return (
       // rechte Seite von this > linke Seite von mo
@@ -39,6 +36,13 @@ class MovableObject extends DrawableObject {
     }
   }
 
+  // pickItem() {
+  //   this.energy += 20;
+  //   if (this.energy > 0) {
+  //     this.energy = 0;
+  //   }else
+  // }
+
   hitHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
@@ -61,7 +65,6 @@ class MovableObject extends DrawableObject {
   isAboveGround() {
     return this.y < 155;
   }
-
 
   playAnimation(images) {
     let i = this.currentImage % images.length;
