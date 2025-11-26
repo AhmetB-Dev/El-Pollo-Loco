@@ -31,13 +31,10 @@ class Statusbars extends DrawableObject {
 
   constructor() {
     super();
-    this.IMAGES = this.STATUS_HEALTH;
-    this.animationImage(this.IMAGES);
-    this.setPercentrage(100);
     this.height = 80;
     this.width = 220;
     this.x = 0;
-    this.y = 50;
+    this.y = 0;
   }
 
   setPercentrage(percentage) {
@@ -52,9 +49,25 @@ class Statusbars extends DrawableObject {
   initBottleBar(x, y, percentage = 0) {
     this.IMAGES = this.STATUS_BOTTLE;
     this.animationImage(this.IMAGES);
+    this.setPercentrage(percentage);
     this.x = x;
     this.y = y;
+  }
+
+  initHealthBar(x, y, percentage = 100) {
+    this.IMAGES = this.STATUS_HEALTH;
+    this.animationImage(this.IMAGES);
     this.setPercentrage(percentage);
+    this.x = x;
+    this.y = y;
+  }
+
+  initCoinBar(x, y, percentage = 0) {
+    this.IMAGES = this.STATUS_COIN;
+    this.animationImage(this.IMAGES);
+    this.setPercentrage(percentage);
+    this.x = x;
+    this.y = y;
   }
 
   resolveImageIndex() {

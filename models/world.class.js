@@ -9,7 +9,7 @@ class World {
   otherDirection = false;
   camera_x = 0;
 
-  statusBar = new Statusbars();
+  healthBar = new Statusbars();
   coinBar = new Statusbars();
   bottleBar = new Statusbars();
 
@@ -18,18 +18,28 @@ class World {
     this.canvas = canvas;
     this.input = input;
 
-    this.bottleBar = new Statusbars();
-    this.bottleBar.initBottleBar(0, 0);
-
-    this.coinBar.IMAGES = this.coinBar.STATUS_COIN;
-    this.coinBar.animationImage(this.coinBar.IMAGES);
-    this.coinBar.setPercentrage(0);
-    this.coinBar.x = 0;
-    this.coinBar.y = 105;
+    this.loadbottleBar();
+    this.loadHealthBar();
+    this.loadCoinBar();
 
     this.draw();
     this.setWorld();
     this.checkCollisions();
+  }
+
+  loadbottleBar() {
+    this.bottleBar = new Statusbars();
+    this.bottleBar.initBottleBar(0, 0);
+  }
+
+  loadHealthBar() {
+    this.healthBar = new Statusbars();
+    this.healthBar.initHealthBar(0, 50);
+  }
+
+  loadCoinBar() {
+    this.coinBar = new Statusbars();
+    this.coinBar.initCoinBar(0, 105);
   }
 
   setWorld() {
@@ -41,7 +51,7 @@ class World {
       this.level.enemies.forEach((enemy) => {
         if (this.character.isColliding(enemy)) {
           this.character.hit();
-          this.statusBar.setPercentrage(this.character.energy);
+          this.healthBar.setPercentrage(this.character.energy);
         }
       });
     }, 1000);
@@ -86,9 +96,8 @@ class World {
 
     this.ctx.translate(-this.camera_x, 0);
     this.addToMap(this.bottleBar);
-    this.addToMap(this.statusBar);
+    this.addToMap(this.healthBar); // <- hier
     this.addToMap(this.coinBar);
-    // this.addToMap(this.healthBar);
     this.ctx.translate(this.camera_x, 0);
 
     this.addToMap(this.character);
