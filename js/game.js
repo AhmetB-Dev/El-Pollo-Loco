@@ -10,8 +10,7 @@ function init() {
 }
 
 function startGame() {
-  document.getElementById("startScreen")
-    .classList.add("d-none");
+  document.getElementById("startScreen").classList.add("d-none");
 }
 
 window.addEventListener("keydown", (e) => {
@@ -31,8 +30,12 @@ window.addEventListener("keydown", (e) => {
     input.SPACE = true;
   }
 
-  // console.log(e);
+  if (e.keyCode == 70) {
+    input.THROW = true;
+  }
+  console.log(e);
 });
+
 window.addEventListener("keyup", (e) => {
   if (e.keyCode == 68) {
     input.RIGHT = false;
@@ -49,6 +52,9 @@ window.addEventListener("keyup", (e) => {
   if (e.keyCode == 32) {
     input.SPACE = false;
   }
+  if (e.keyCode == 70) {
+    input.THROW = false;
+  }
 
-  // console.log(e);
+  console.log(e);
 });

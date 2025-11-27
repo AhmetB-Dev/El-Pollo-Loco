@@ -12,6 +12,7 @@ class World {
   healthBar = new Statusbars();
   coinBar = new Statusbars();
   bottleBar = new Statusbars();
+  throwableObjects = [new ThrowableObject()];
 
   constructor(canvas, input) {
     this.ctx = canvas.getContext("2d");
@@ -24,7 +25,8 @@ class World {
 
     this.draw();
     this.setWorld();
-    this.checkCollisions();
+
+    this.handlePlayerInteractions();
   }
 
   loadbottleBar() {
@@ -46,6 +48,19 @@ class World {
     this.character.world = this;
   }
 
+  handlePlayerInteractions() {
+    setInterval(() => {
+      this.checkCollisions();
+      this.checkThrowableObjects();
+    }, 100);
+  }
+
+  checkThrowableObjects() {
+    if (this.input.THROW) {
+      let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+      this.throwableObjects.push(bottle);
+    }
+  }
   checkCollisions() {
     setInterval(() => {
       this.level.enemies.forEach((enemy) => {
@@ -104,7 +119,7 @@ class World {
     this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.level.coin);
     this.addObjectsToMap(this.level.bottels);
-
+    this.addObjectsToMap(this.throwableObjects);
     this.ctx.translate(-this.camera_x, 0);
 
     let self = this;

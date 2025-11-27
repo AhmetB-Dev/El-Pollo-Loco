@@ -4,4 +4,5 @@ class Input extends MovableObject {
   UP = false;
   DOWN = false;
   SPACE = false;
+  THROW = false;
 }

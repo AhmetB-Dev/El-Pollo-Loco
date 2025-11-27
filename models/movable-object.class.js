@@ -9,13 +9,9 @@ class MovableObject extends DrawableObject {
 
   isColliding(mo) {
     return (
-      // rechte Seite von this > linke Seite von mo
       this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
-      // linke Seite von this < rechte Seite von mo
       this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
-      // untere Seite von this > obere Seite von mo
       this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
-      // obere Seite von this < untere Seite von mo
       this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom
     );
   }
@@ -63,7 +59,11 @@ class MovableObject extends DrawableObject {
   }
 
   isAboveGround() {
-    return this.y < 155;
+    if (this instanceof ThrowableObject) {
+      return true;
+    } else {
+      return this.y < 155;
+    }
   }
 
   playAnimation(images) {
