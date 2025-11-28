@@ -111,7 +111,7 @@ class World {
 
     this.ctx.translate(-this.camera_x, 0);
     this.addToMap(this.bottleBar);
-    this.addToMap(this.healthBar); // <- hier
+    this.addToMap(this.healthBar);
     this.addToMap(this.coinBar);
     this.ctx.translate(this.camera_x, 0);
 

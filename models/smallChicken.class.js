@@ -4,15 +4,28 @@ class SmallChicken extends MovableObject {
   width = 90;
 
   ENEMIES_WALK = [
-    "assets/img_pollo_locco/img/3_enemies_chicken/chicken_small/1_walk/1_w.png",
-    "assets/img_pollo_locco/img/3_enemies_chicken/chicken_small/1_walk/2_w.png",
-    "assets/img_pollo_locco/img/3_enemies_chicken/chicken_small/1_walk/3_w.png",
+    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Regular damage/Yellow 1.png",
+    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Regular damage/Yellow 2.png",
+    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Regular damage/Yellow 3.png",
+    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Regular damage/Yellow 4.png",
   ];
 
-  ENEMIES_DEAD = ["assets/img_pollo_locco/img/3_enemies_chicken/chicken_small/2_dead/dead.png"];
+  ENEMIES_ATTACK = [
+    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png",
+    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Súper dangerous/Green 2.png",
+    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Súper dangerous/Green 3.png",
+    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Súper dangerous/Green 4.png",
+  ];
+
+  ENEMIES_DEAD = [
+    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y1.png",
+    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y2.png",
+    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y3.png",
+    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y4.png",
+  ];
 
   constructor() {
-    super().loadImage("assets/img_pollo_locco/img/3_enemies_chicken/chicken_small/1_walk/1_w.png");
+    super().loadImage("assets/assets_sharkie/2.Enemy/2 Jelly fish/Regular damage/Yellow 1.png");
     this.loadAssets();
     this.animationSmallChicken();
     this.spawnSmallChickenRandom();

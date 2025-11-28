@@ -1,47 +1,59 @@
 class Boss extends MovableObject {
   height = 350;
   width = 200;
-  y = 100 ;
+  y = 100;
 
   ENEMIES_WALK = [
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/1_walk/G1.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/1_walk/G2.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/1_walk/G4.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/1_walk/G3.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/2.floating/1.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/2.floating/2.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/2.floating/4.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/2.floating/3.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/2.floating/5.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/2.floating/8.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/2.floating/6.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/2.floating/7.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/2.floating/9.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/2.floating/10.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/2.floating/12.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/2.floating/11.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/2.floating/13.png",
   ];
 
   ENEMIES_ALERT = [
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/2_alert/G5.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/2_alert/G6.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/2_alert/G8.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/2_alert/G7.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/2_alert/G9.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/2_alert/G10.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/2_alert/G11.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/2_alert/G12.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/1.Introduce/1.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/1.Introduce/2.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/1.Introduce/3.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/1.Introduce/4.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/1.Introduce/5.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/1.Introduce/6.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/1.Introduce/7.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/1.Introduce/8.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/1.Introduce/9.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/1.Introduce/10.png",
   ];
 
   ENEMIES_ATTACK = [
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/3_attack/G13.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/3_attack/G14.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/3_attack/G15.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/3_attack/G16.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/3_attack/G17.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/3_attack/G18.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/3_attack/G19.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/3_attack/G20.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/Attack/1.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/Attack/2.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/Attack/3.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/Attack/4.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/Attack/5.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/Attack/6.png",
   ];
 
   ENEMIES_HURT = [
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/4_hurt/G21.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/4_hurt/G22.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/4_hurt/G23.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/Hurt/1.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/Hurt/2.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/Hurt/3.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/Hurt/4.png",
   ];
 
   ENEMIES_DEAD = [
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/5_dead/G24.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/5_dead/G26.png",
-    "assets/img_pollo_locco/img/4_enemie_boss_chicken/5_dead/G25.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 6.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 7.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 8.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 9.png",
+    "assets/assets_sharkie/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 10.png",
   ];
 
   constructor() {

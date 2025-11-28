@@ -5,8 +5,8 @@ class Cloud extends MovableObject {
 
   constructor() {
     super().loadImage(
-      "assets/img_pollo_locco/img/5_background/layers/4_clouds/1.png",
-      "assets/img_pollo_locco/img/5_background/layers/4_clouds/2.png"
+      "assets/assets_sharkie/3. Background/Layers/1. Light/2.png",
+      "assets/assets_sharkie/3. Background/Layers/1. Light/2.png"
     );
     this.spawnCloudsRandom();
     this.animationCloud();

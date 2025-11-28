@@ -3,16 +3,30 @@ class Chicken extends MovableObject {
   height = 50;
   width = 90;
 
-  ENEMIES_WALK = [
-    "assets/img_pollo_locco/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png",
-    "assets/img_pollo_locco/img/3_enemies_chicken/chicken_normal/1_walk/2_w.png",
-    "assets/img_pollo_locco/img/3_enemies_chicken/chicken_normal/1_walk/3_w.png",
-  ];
+ENEMIES_WALK = [
+  "assets/assets_sharkie/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim1.png",
+  "assets/assets_sharkie/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim3.png",
+  "assets/assets_sharkie/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim2.png",
+  "assets/assets_sharkie/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim4.png",
+  "assets/assets_sharkie/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim5.png",
+];
 
-  ENEMIES_DEAD = ["assets/img_pollo_locco/img/3_enemies_chicken/chicken_normal/2_dead/dead.png"];
+ENEMIES_ATTACK = [
+  "assets/assets_sharkie/2.Enemy/1.Puffer fish (3 color options)/3.Bubbleeswim/3.bubbleswim1.png",
+  "assets/assets_sharkie/2.Enemy/1.Puffer fish (3 color options)/3.Bubbleeswim/3.bubbleswim2.png",
+  "assets/assets_sharkie/2.Enemy/1.Puffer fish (3 color options)/3.Bubbleeswim/3.bubbleswim4.png",
+  "assets/assets_sharkie/2.Enemy/1.Puffer fish (3 color options)/3.Bubbleeswim/3.bubbleswim3.png",
+  "assets/assets_sharkie/2.Enemy/1.Puffer fish (3 color options)/3.Bubbleeswim/3.bubbleswim5.png",
+];
+
+ENEMIES_DEAD = [
+  "assets/assets_sharkie/2.Enemy/1.Puffer fish (3 color options)/4.DIE/3.2.png",
+  "assets/assets_sharkie/2.Enemy/1.Puffer fish (3 color options)/4.DIE/3.3.png",
+  "assets/assets_sharkie/2.Enemy/1.Puffer fish (3 color options)/4.DIE/3.png"
+];
 
   constructor() {
-    super().loadImage("assets/img_pollo_locco/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png");
+    super().loadImage("assets/assets_sharkie/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim1.png");
     this.loadAssets();
     this.animationChicken();
     this.spawnChickenRandom();

@@ -3,7 +3,7 @@ class Character extends MovableObject {
   height = 270;
   width = 140;
   y = 155;
-  speed = 23;
+  speed = 60; // 23 ursprunglich
 
   offset = {
     top: 110,
@@ -13,70 +13,134 @@ class Character extends MovableObject {
   };
 
   IMAGES_IDLE = [
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/idle/I-1.png",
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/idle/I-2.png",
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/idle/I-4.png",
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/idle/I-3.png",
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/idle/I-5.png",
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/idle/I-6.png",
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/idle/I-7.png",
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/idle/I-9.png",
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/idle/I-8.png",
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/idle/I-10.png",
+    "assets/assets_sharkie/1.Sharkie/1.IDLE/1.png",
+    "assets/assets_sharkie/1.Sharkie/1.IDLE/2.png",
+    "assets/assets_sharkie/1.Sharkie/1.IDLE/3.png",
+    "assets/assets_sharkie/1.Sharkie/1.IDLE/4.png",
+    "assets/assets_sharkie/1.Sharkie/1.IDLE/5.png",
+    "assets/assets_sharkie/1.Sharkie/1.IDLE/6.png",
+    "assets/assets_sharkie/1.Sharkie/1.IDLE/7.png",
+    "assets/assets_sharkie/1.Sharkie/1.IDLE/8.png",
+    "assets/assets_sharkie/1.Sharkie/1.IDLE/10.png",
+    "assets/assets_sharkie/1.Sharkie/1.IDLE/9.png",
+    "assets/assets_sharkie/1.Sharkie/1.IDLE/11.png",
+    "assets/assets_sharkie/1.Sharkie/1.IDLE/12.png",
+    "assets/assets_sharkie/1.Sharkie/1.IDLE/14.png",
+    "assets/assets_sharkie/1.Sharkie/1.IDLE/13.png",
+    "assets/assets_sharkie/1.Sharkie/1.IDLE/15.png",
+    "assets/assets_sharkie/1.Sharkie/1.IDLE/16.png",
+    "assets/assets_sharkie/1.Sharkie/1.IDLE/17.png",
+    "assets/assets_sharkie/1.Sharkie/1.IDLE/18.png",
   ];
 
   IMAGES_LONG_IDLE = [
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-11.png",
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-12.png",
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-13.png",
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-14.png",
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-15.png",
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-16.png",
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-17.png",
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-18.png",
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-19.png",
-    "assets/img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-20.png",
+    "assets/assets_sharkie/1.Sharkie/2.Long_IDLE/I2.png",
+    "assets/assets_sharkie/1.Sharkie/2.Long_IDLE/i1.png",
+    "assets/assets_sharkie/1.Sharkie/2.Long_IDLE/I3.png",
+    "assets/assets_sharkie/1.Sharkie/2.Long_IDLE/I4.png",
+    "assets/assets_sharkie/1.Sharkie/2.Long_IDLE/I5.png",
+    "assets/assets_sharkie/1.Sharkie/2.Long_IDLE/I6.png",
+    "assets/assets_sharkie/1.Sharkie/2.Long_IDLE/I7.png",
+    "assets/assets_sharkie/1.Sharkie/2.Long_IDLE/I8.png",
+    "assets/assets_sharkie/1.Sharkie/2.Long_IDLE/I9.png",
+    "assets/assets_sharkie/1.Sharkie/2.Long_IDLE/I10.png",
+    "assets/assets_sharkie/1.Sharkie/2.Long_IDLE/I11.png",
+    "assets/assets_sharkie/1.Sharkie/2.Long_IDLE/I12.png",
+    "assets/assets_sharkie/1.Sharkie/2.Long_IDLE/I13.png",
+    "assets/assets_sharkie/1.Sharkie/2.Long_IDLE/I14.png",
   ];
 
   IMAGES_WALK = [
-    "assets/img_pollo_locco/img/2_character_pepe/2_walk/W-21.png",
-    "assets/img_pollo_locco/img/2_character_pepe/2_walk/W-22.png",
-    "assets/img_pollo_locco/img/2_character_pepe/2_walk/W-23.png",
-    "assets/img_pollo_locco/img/2_character_pepe/2_walk/W-24.png",
-    "assets/img_pollo_locco/img/2_character_pepe/2_walk/W-25.png",
-    "assets/img_pollo_locco/img/2_character_pepe/2_walk/W-26.png",
+    "assets/assets_sharkie/1.Sharkie/3.Swim/1.png",
+    "assets/assets_sharkie/1.Sharkie/3.Swim/2.png",
+    "assets/assets_sharkie/1.Sharkie/3.Swim/3.png",
+    "assets/assets_sharkie/1.Sharkie/3.Swim/4.png",
+    "assets/assets_sharkie/1.Sharkie/3.Swim/5.png",
+    "assets/assets_sharkie/1.Sharkie/3.Swim/6.png",
   ];
 
-  IMAGES_JUMP = [
-    "assets/img_pollo_locco/img/2_character_pepe/3_jump/J-36.png",
-    "assets/img_pollo_locco/img/2_character_pepe/3_jump/J-37.png",
-    "assets/img_pollo_locco/img/2_character_pepe/3_jump/J-31.png",
-    "assets/img_pollo_locco/img/2_character_pepe/3_jump/J-32.png",
-    "assets/img_pollo_locco/img/2_character_pepe/3_jump/J-33.png",
-    "assets/img_pollo_locco/img/2_character_pepe/3_jump/J-34.png",
-    "assets/img_pollo_locco/img/2_character_pepe/3_jump/J-35.png",
-    "assets/img_pollo_locco/img/2_character_pepe/3_jump/J-38.png",
-    "assets/img_pollo_locco/img/2_character_pepe/3_jump/J-39.png",
+IMAGES_ATTACK_ANI1 = [
+  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/1.png",
+  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/2.png",
+  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/3.png",
+  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/4.png",
+  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/5.png",
+  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png",
+  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png",
+  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png"
+];
+IMAGES_ATTACK_BUBBLE = [
+  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/Bubble.png"
+];
+
+IMAGES_UTLIMATE_ATTACK = [
+  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/1.png",
+  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/2.png",
+  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/3.png",
+  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/4.png",
+  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/5.png",
+  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png",
+  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png",
+  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png",
+  "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y1.png",
+  "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y2.png",
+  "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y3.png",
+  "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y4.png"
+];
+
+  IMAGES_ATTACK_ANI2 = [
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Fin slap/1.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Fin slap/4.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Fin slap/5.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Fin slap/6.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Fin slap/7.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Fin slap/8.png",
   ];
 
-  IMAGES_HURT = [
-    "assets/img_pollo_locco/img/2_character_pepe/4_hurt/H-43.png",
-    "assets/img_pollo_locco/img/2_character_pepe/4_hurt/H-42.png",
-    "assets/img_pollo_locco/img/2_character_pepe/4_hurt/H-41.png",
+  IMAGES_HURT_ANI1 = [
+    "assets/assets_sharkie/1.Sharkie/5.Hurt/1.Poisoned/1.png",
+    "assets/assets_sharkie/1.Sharkie/5.Hurt/1.Poisoned/2.png",
+    "assets/assets_sharkie/1.Sharkie/5.Hurt/1.Poisoned/3.png",
+    "assets/assets_sharkie/1.Sharkie/5.Hurt/1.Poisoned/4.png",
+    "assets/assets_sharkie/1.Sharkie/5.Hurt/1.Poisoned/5.png",
   ];
 
-  IMAGES_DEAD = [
-    "assets/img_pollo_locco/img/2_character_pepe/5_dead/D-51.png",
-    "assets/img_pollo_locco/img/2_character_pepe/5_dead/D-52.png",
-    "assets/img_pollo_locco/img/2_character_pepe/5_dead/D-53.png",
-    "assets/img_pollo_locco/img/2_character_pepe/5_dead/D-54.png",
-    "assets/img_pollo_locco/img/2_character_pepe/5_dead/D-55.png",
-    "assets/img_pollo_locco/img/2_character_pepe/5_dead/D-56.png",
-    "assets/img_pollo_locco/img/2_character_pepe/5_dead/D-57.png",
+  IMAGES_HURT_ANI2 = [
+    "assets/assets_sharkie/1.Sharkie/5.Hurt/2.Electric shock/1.png",
+    "assets/assets_sharkie/1.Sharkie/5.Hurt/2.Electric shock/2.png",
+    "assets/assets_sharkie/1.Sharkie/5.Hurt/2.Electric shock/3.png",
+  ];
+
+  IMAGES_DEAD_ANI1 = [
+    "assets/assets_sharkie/1.Sharkie/6.dead/1.Poisoned/1.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/1.Poisoned/2.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/1.Poisoned/3.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/1.Poisoned/4.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/1.Poisoned/5.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/1.Poisoned/6.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/1.Poisoned/7.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/1.Poisoned/8.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/1.Poisoned/9.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/1.Poisoned/10.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/1.Poisoned/11.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/1.Poisoned/12.png",
+  ];
+
+  IMAGES_DEAD_ANI2 = [
+    "assets/assets_sharkie/1.Sharkie/6.dead/2.Electro_shock/1.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/2.Electro_shock/2.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/2.Electro_shock/3.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/2.Electro_shock/4.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/2.Electro_shock/5.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/2.Electro_shock/6.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/2.Electro_shock/7.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/2.Electro_shock/8.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/2.Electro_shock/9.png",
+    "assets/assets_sharkie/1.Sharkie/6.dead/2.Electro_shock/10.png",
   ];
 
   constructor() {
-    super().loadImage("assets/img_pollo_locco/img/2_character_pepe/1_idle/idle/I-1.png");
+    super().loadImage("assets/assets_sharkie/1.Sharkie/1.IDLE/1.png");
     this.loadAssets();
     this.applyGravity();
     this.animation();
@@ -86,9 +150,10 @@ class Character extends MovableObject {
     this.animationImage(this.IMAGES_IDLE);
     this.animationImage(this.IMAGES_LONG_IDLE);
     this.animationImage(this.IMAGES_WALK);
-    this.animationImage(this.IMAGES_JUMP);
-    this.animationImage(this.IMAGES_HURT);
-    this.animationImage(this.IMAGES_DEAD);
+    this.animationImage(this.IMAGES_HURT_ANI1);
+    this.animationImage(this.IMAGES_HURT_ANI2);
+    this.animationImage(this.IMAGES_DEAD_ANI1);
+    this.animationImage(this.IMAGES_DEAD_ANI2);
   }
 
   animation() {
@@ -145,7 +210,7 @@ class Character extends MovableObject {
   startJumpAnimation() {
     setInterval(() => {
       if (this.world.input.UP) {
-        this.playAnimation(this.IMAGES_JUMP);
+        this.playAnimation(this.IMAGES_WALK);
       }
       if (this.world.input.UP && !this.isAboveGround()) {
         this.setJumpHeight();
@@ -156,7 +221,7 @@ class Character extends MovableObject {
   startHurtAnimation() {
     setInterval(() => {
       if (this.hitHurt()) {
-        this.playAnimation(this.IMAGES_HURT);
+        this.playAnimation(this.IMAGES_HURT_ANI1);
       }
     }, 200);
   }
@@ -164,7 +229,7 @@ class Character extends MovableObject {
   startDeadAnimation() {
     setInterval(() => {
       if (this.dead()) {
-        this.playAnimation(this.IMAGES_DEAD);
+        this.playAnimation(this.IMAGES_DEAD_ANI1);
       } //  else if (this.hitHurt()) {
       //   this.playAnimation(this.IMAGES_HURT);
       // }

@@ -3,30 +3,30 @@ class Statusbars extends DrawableObject {
   percentage = 100;
 
   STATUS_HEALTH = [
-    "assets/img_pollo_locco/img/7_statusbars/1_statusbar/2_statusbar_health/green/0.png",
-    "assets/img_pollo_locco/img/7_statusbars/1_statusbar/2_statusbar_health/green/20.png",
-    "assets/img_pollo_locco/img/7_statusbars/1_statusbar/2_statusbar_health/green/40.png",
-    "assets/img_pollo_locco/img/7_statusbars/1_statusbar/2_statusbar_health/green/60.png",
-    "assets/img_pollo_locco/img/7_statusbars/1_statusbar/2_statusbar_health/green/80.png",
-    "assets/img_pollo_locco/img/7_statusbars/1_statusbar/2_statusbar_health/green/100.png",
+    "assets/assets_sharkie/4. Marcadores/green/Life/0_  copia 3.png",
+    "assets/assets_sharkie/4. Marcadores/green/Life/20_ copia 4.png",
+    "assets/assets_sharkie/4. Marcadores/green/Life/40_  copia 3.png",
+    "assets/assets_sharkie/4. Marcadores/green/Life/60_  copia 3.png",
+    "assets/assets_sharkie/4. Marcadores/green/Life/80_  copia 3.png",
+    "assets/assets_sharkie/4. Marcadores/green/Life/100_  copia 2.png",
   ];
 
   STATUS_COIN = [
-    "assets/img_pollo_locco/img/7_statusbars/1_statusbar/1_statusbar_coin/blue/0.png",
-    "assets/img_pollo_locco/img/7_statusbars/1_statusbar/1_statusbar_coin/blue/20.png",
-    "assets/img_pollo_locco/img/7_statusbars/1_statusbar/1_statusbar_coin/blue/40.png",
-    "assets/img_pollo_locco/img/7_statusbars/1_statusbar/1_statusbar_coin/blue/60.png",
-    "assets/img_pollo_locco/img/7_statusbars/1_statusbar/1_statusbar_coin/blue/80.png",
-    "assets/img_pollo_locco/img/7_statusbars/1_statusbar/1_statusbar_coin/blue/100.png",
+    "assets/assets_sharkie/4. Marcadores/orange/0_  copia 2.png",
+    "assets/assets_sharkie/4. Marcadores/orange/20_  copia.png",
+    "assets/assets_sharkie/4. Marcadores/orange/40_  copia 2.png",
+    "assets/assets_sharkie/4. Marcadores/orange/60_  copia 2.png",
+    "assets/assets_sharkie/4. Marcadores/orange/80_  copia 2.png",
+    "assets/assets_sharkie/4. Marcadores/orange/100_ copia 2.png",
   ];
 
   STATUS_BOTTLE = [
-    "assets/img_pollo_locco/img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/0.png",
-    "assets/img_pollo_locco/img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/20.png",
-    "assets/img_pollo_locco/img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/40.png",
-    "assets/img_pollo_locco/img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/60.png",
-    "assets/img_pollo_locco/img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/80.png",
-    "assets/img_pollo_locco/img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/100.png",
+    "assets/assets_sharkie/4. Marcadores/Purple/0_.png",
+    "assets/assets_sharkie/4. Marcadores/Purple/20_.png",
+    "assets/assets_sharkie/4. Marcadores/Purple/40_.png",
+    "assets/assets_sharkie/4. Marcadores/Purple/60_.png",
+    "assets/assets_sharkie/4. Marcadores/Purple/80_.png",
+    "assets/assets_sharkie/4. Marcadores/Purple/100_.png",
   ];
 
   constructor() {
