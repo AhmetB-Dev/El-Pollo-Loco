@@ -6,10 +6,10 @@ class Character extends MovableObject {
   speed = 60; // 23 ursprunglich
 
   offset = {
-    top: 110,
+    top: 130,
     left: 25,
-    right: 35,
-    bottom: 10,
+    right:25,
+    bottom: 60,
   };
 
   IMAGES_IDLE = [

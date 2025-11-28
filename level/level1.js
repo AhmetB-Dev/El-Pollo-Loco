@@ -11,16 +11,16 @@ const level1 = new Level(
   ],
 
   [
-    new Coin("assets/assets_sharkie/4. Marcadores/1. Coins/1.png", 500, 300),
-    new Coin("assets/assets_sharkie/4. Marcadores/1. Coins/1.png", 550, 300),
-    new Coin("assets/assets_sharkie/4. Marcadores/1. Coins/1.png", 600, 300),
-    new Coin("assets/assets_sharkie/4. Marcadores/1. Coins/1.png", 650, 300),
-    new Coin("assets/assets_sharkie/4. Marcadores/1. Coins/1.png", 700, 300),
-    new Coin("assets/assets_sharkie/4. Marcadores/1. Coins/1.png", 1000, 300),
-    new Coin("assets/assets_sharkie/4. Marcadores/1. Coins/1.png", 1050, 300),
-    new Coin("assets/assets_sharkie/4. Marcadores/1. Coins/1.png", 1100, 300),
-    new Coin("assets/assets_sharkie/4. Marcadores/1. Coins/1.png", 1150, 300),
-    new Coin("assets/assets_sharkie/4. Marcadores/1. Coins/1.png", 1200, 300),
+    new Coin(500, 300),
+    new Coin(550, 240),
+    new Coin(600, 200),
+    new Coin(650, 160),
+    new Coin(700, 120),
+    new Coin(750, 120),
+    new Coin(800, 160),
+    new Coin(850, 200),
+    new Coin(900, 240),
+    new Coin(950, 300),
   ],
 
   [
@@ -57,6 +57,8 @@ const level1 = new Level(
     new BackgroundObject("assets/assets_sharkie/3. Background/Layers/3.Fondo 1/L.png", 719 * 3, 0),
     new BackgroundObject("assets/assets_sharkie/3. Background/Layers/2. Floor/L.png", 719 * 3, 0),
 
+    new BackgroundObject("assets/assets_sharkie/3. Background/Barrier/1.png", 900 * 2, 0),
+
     new BackgroundObject("assets/assets_sharkie/3. Background/Layers/5. Water/L1.png", 719 * 4, 0),
     new BackgroundObject("assets/assets_sharkie/3. Background/Layers/4.Fondo 2/L1.png", 719 * 4, 0),
     new BackgroundObject("assets/assets_sharkie/3. Background/Layers/3.Fondo 1/L1.png", 719 * 4, 0),
@@ -69,5 +71,5 @@ const level1 = new Level(
   ],
 
   // 3) Clouds
-  [new Cloud(0, 0), new Cloud(720, 0)]
+  [new AmbientObject(0, 0), new AmbientObject(720, 0)]
 );

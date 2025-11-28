@@ -1,22 +1,34 @@
 class Coin extends MovableObject {
   offset = {
-    top: 85,
-    left: 65,
-    right: 65,
-    bottom: 85,
+    top: 5,
+    left: 5,
+    right: 5,
+    bottom: 5,
   };
+  width = 40;
+  height = 60;
 
-  constructor(imagePath, x, y) {
-    super().loadImage(imagePath);
+  IMAGES_COIN = [
+    "assets/assets_sharkie/4. Marcadores/1. Coins/1.png",
+    "assets/assets_sharkie/4. Marcadores/1. Coins/2.png",
+    "assets/assets_sharkie/4. Marcadores/1. Coins/3.png",
+    "assets/assets_sharkie/4. Marcadores/1. Coins/4.png",
+  ];
+
+  constructor(x, y) {
+    super();
+    this.animationCoin();
     this.x = x;
     this.y = y;
+    this.heiht = this.height;
+    this.width = this.width;
   }
 
-  // getItem() {
-  //   this.items += 1;
-  //   if (this.items > 0) {
-  //     this.items = 0;
-
-  //   }
-  // }
+  animationCoin() {
+    this.animationImage(this.IMAGES_COIN);
+    this.loadImage(this.IMAGES_COIN[0]);
+    setInterval(() => {
+      this.playAnimation(this.IMAGES_COIN);
+    }, 325);
+  }
 }
