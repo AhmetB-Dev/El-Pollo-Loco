@@ -1,6 +1,6 @@
 class Enemy_Variant02 extends MovableObject {
-  y = 370;
-  height = 50;
+  y = 300;
+  height = 60;
   width = 90;
 
   ENEMIES_WALK = [

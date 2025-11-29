@@ -1,14 +1,15 @@
 class Character extends MovableObject {
   world;
+  coins = 0;
+  speed = 60; // 23 ursprunglich
   height = 270;
   width = 140;
   y = 155;
-  speed = 60; // 23 ursprunglich
 
   offset = {
     top: 130,
     left: 25,
-    right:25,
+    right: 25,
     bottom: 60,
   };
 
@@ -59,34 +60,33 @@ class Character extends MovableObject {
     "assets/assets_sharkie/1.Sharkie/3.Swim/6.png",
   ];
 
-IMAGES_ATTACK_ANI1 = [
-  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/1.png",
-  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/2.png",
-  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/3.png",
-  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/4.png",
-  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/5.png",
-  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png",
-  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png",
-  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png"
-];
-IMAGES_ATTACK_BUBBLE = [
-  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/Bubble.png"
-];
+  IMAGES_ATTACK_ANI1 = [
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/1.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/2.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/3.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/4.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/5.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png",
+  ];
 
-IMAGES_UTLIMATE_ATTACK = [
-  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/1.png",
-  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/2.png",
-  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/3.png",
-  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/4.png",
-  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/5.png",
-  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png",
-  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png",
-  "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png",
-  "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y1.png",
-  "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y2.png",
-  "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y3.png",
-  "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y4.png"
-];
+  IMAGES_ATTACK_BUBBLE = ["assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/Bubble.png"];
+
+  IMAGES_UTLIMATE_ATTACK = [
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/1.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/2.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/3.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/4.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/5.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png",
+    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png",
+    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y1.png",
+    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y2.png",
+    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y3.png",
+    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y4.png",
+  ];
 
   IMAGES_ATTACK_ANI2 = [
     "assets/assets_sharkie/1.Sharkie/4.Attack/Fin slap/1.png",
@@ -179,6 +179,11 @@ IMAGES_UTLIMATE_ATTACK = [
   //     this.currentImage++;
   //   }, 780);
   // }
+
+  addCoin() {
+    this.coins++;
+    if (this.coins > 5) this.coins = 5; 
+  }
 
   startWalkAnimation() {
     this.walkRight();

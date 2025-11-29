@@ -1,7 +1,14 @@
 class Boss extends MovableObject {
-  height = 350;
-  width = 200;
-  y = 100;
+  height = 400;
+  width = 250;
+  y = 60;
+
+  offset = {
+    top: 135,
+    left: 15,
+    right: 15,
+    bottom: 50,
+  };
 
   ENEMIES_WALK = [
     "assets/assets_sharkie/2.Enemy/3 Final Enemy/2.floating/1.png",
@@ -57,12 +64,13 @@ class Boss extends MovableObject {
   ];
 
   constructor() {
-    super().loadImage(this.ENEMIES_WALK[0]);
+    super();
+    this.loadImage(this.ENEMIES_WALK[0]);
     this.loadAssets();
     this.animationBoss();
     this.bossSpeed();
 
-    this.x = 600;
+    this.x = 3800; // 3400 trigger  boss sequenz
   }
 
   loadAssets() {
@@ -80,8 +88,7 @@ class Boss extends MovableObject {
   }
 
   animationBossWalk() {
-    this.moveLeft();
-    // this.moveRight();
+    // this.moveLeft();
     setInterval(() => {
       this.playAnimation(this.ENEMIES_WALK);
     }, 175);

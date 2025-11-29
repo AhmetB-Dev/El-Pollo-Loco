@@ -1,16 +1,16 @@
 class Level {
   enemies;
   coin;
-  bottels;
+  ammo;
   backgroundObjects;
-  clouds;
+  ambient;
   level_end = 240320;
 
-  constructor(enemies, coin, bottels, backgroundObjects, clouds) {
+  constructor(enemies, coin, ammo, backgroundObjects, ambient) {
     this.enemies = enemies;
     this.coin = coin;
-    this.bottels = bottels;
+    this.ammo = ammo;
     this.backgroundObjects = backgroundObjects;
-    this.clouds = clouds;
+    this.ambient = ambient;
   }
 }

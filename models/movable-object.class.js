@@ -16,13 +16,6 @@ class MovableObject extends DrawableObject {
     );
   }
 
-  getItems() {
-    this.items += 1;
-    if (this.items > 5) {
-      this.items = 5;
-    }
-  }
-
   hit() {
     this.energy -= 20;
     if (this.energy < 0) {
@@ -32,17 +25,17 @@ class MovableObject extends DrawableObject {
     }
   }
 
-  // pickItem() {
-  //   this.energy += 20;
-  //   if (this.energy > 0) {
-  //     this.energy = 0;
-  //   }else
-  // }
-
   hitHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
     return timepassed < 1.5;
+  }
+
+  getItems() {
+    this.items += 1;
+    if (this.items > 5) {
+      this.items = 5;
+    }
   }
 
   dead() {
@@ -55,7 +48,7 @@ class MovableObject extends DrawableObject {
         this.y -= this.speedY;
         this.speedY -= this.acceleration;
       }
-    }, 1000 / 25);
+    }, 1000 / 20);
   }
 
   isAboveGround() {

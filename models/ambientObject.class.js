@@ -9,14 +9,14 @@ class AmbientObject extends MovableObject {
       "assets/assets_sharkie/3. Background/Layers/1. Light/2.png"
     );
     // this.spawnCloudsRandom();
-    this.animationCloud();
+    this.animationAmbient();
   }
 
-  spawnCloudsRandom() {
+  spawnAmbientsRandom() {
     // this.x = Math.random() * 2500;
   }
 
-  animationCloud() {
+  animationAmbient() {
     this.moveLeft();
   }
 }

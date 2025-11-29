@@ -1,6 +1,7 @@
 class Statusbars extends DrawableObject {
   IMAGES;
   percentage = 100;
+  stackObjects = 0;
 
   STATUS_HEALTH = [
     "assets/assets_sharkie/4. Marcadores/green/Life/0_  copia 3.png",
@@ -20,7 +21,7 @@ class Statusbars extends DrawableObject {
     "assets/assets_sharkie/4. Marcadores/orange/100_ copia 2.png",
   ];
 
-  STATUS_BOTTLE = [
+  STATUS_AMMO = [
     "assets/assets_sharkie/4. Marcadores/Purple/0_.png",
     "assets/assets_sharkie/4. Marcadores/Purple/20_.png",
     "assets/assets_sharkie/4. Marcadores/Purple/40_.png",
@@ -46,12 +47,19 @@ class Statusbars extends DrawableObject {
     this.img = this.imageCache[path];
   }
 
-  initBottleBar(x, y, percentage = 0) {
-    this.IMAGES = this.STATUS_BOTTLE;
+  setStack(stackObjects) {
+    this.stackObjects = stackObjects;
+    const index = this.stackImageIndex();
+    const path = this.IMAGES[index];
+    this.img = this.imageCache[path];
+  }
+
+  initAmmoBar(x, y, stackObjects = 0) {
+    this.IMAGES = this.STATUS_AMMO;
     this.animationImage(this.IMAGES);
-    this.setPercentrage(percentage);
     this.x = x;
     this.y = y;
+    this.setStack(stackObjects);
   }
 
   initHealthBar(x, y, percentage = 100) {
@@ -62,12 +70,12 @@ class Statusbars extends DrawableObject {
     this.y = y;
   }
 
-  initCoinBar(x, y, percentage = 0) {
+  initCoinBar(x, y, stackObjects = 0) {
     this.IMAGES = this.STATUS_COIN;
     this.animationImage(this.IMAGES);
-    this.setPercentrage(percentage);
     this.x = x;
     this.y = y;
+    this.setStack(stackObjects);
   }
 
   resolveImageIndex() {
@@ -87,18 +95,11 @@ class Statusbars extends DrawableObject {
   }
 
   stackImageIndex() {
-    if (this.percentage == 0) {
-      return 0;
-    } else if (this.percentage < 20) {
-      return 1;
-    } else if (this.percentage < 40) {
-      return 2;
-    } else if (this.percentage < 60) {
-      return 3;
-    } else if (this.percentage < 80) {
-      return 4;
-    } else {
-      return 5;
-    }
+    if (this.stackObjects == 0) return 0;
+    else if (this.stackObjects < 20) return 1;
+    else if (this.stackObjects < 40) return 2;
+    else if (this.stackObjects < 60) return 3;
+    else if (this.stackObjects < 80) return 4;
+    else return 5;
   }
 }

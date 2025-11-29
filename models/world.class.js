@@ -11,7 +11,7 @@ class World {
 
   healthBar = new Statusbars();
   coinBar = new Statusbars();
-  bottleBar = new Statusbars();
+  ammoBar = new Statusbars();
   throwableObjects = [new ThrowableObject()];
 
   constructor(canvas, input) {
@@ -19,7 +19,7 @@ class World {
     this.canvas = canvas;
     this.input = input;
 
-    this.loadbottleBar();
+    this.loadAmmoBar();
     this.loadHealthBar();
     this.loadCoinBar();
 
@@ -29,9 +29,9 @@ class World {
     this.handlePlayerInteractions();
   }
 
-  loadbottleBar() {
-    this.bottleBar = new Statusbars();
-    this.bottleBar.initBottleBar(0, 0);
+  loadAmmoBar() {
+    this.ammoBar = new Statusbars();
+    this.ammoBar.initAmmoBar(0, 0);
   }
 
   loadHealthBar() {
@@ -54,76 +54,99 @@ class World {
       this.checkThrowableObjects();
     }, 100);
   }
-
   checkThrowableObjects() {
     if (this.input.THROW) {
-      let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
-      this.throwableObjects.push(bottle);
+      let ammo = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+      this.throwableObjects.push(ammo);
     }
   }
+
   checkCollisions() {
-    setInterval(() => {
-      this.level.enemies.forEach((enemy) => {
-        if (this.character.isColliding(enemy)) {
-          this.character.hit();
-          this.healthBar.setPercentrage(this.character.energy);
-        }
-      });
-    }, 1000);
+    this.updateHealthBar();
+    this.updateAmmoBar();
+    this.updateCoinBar();
+  }
 
+  updateHealthBar() {
+    for (const enemy of this.level.enemies) {
+      if (this.character.isColliding(enemy)) {
+        this.character.hit();
+        this.healthBar.setPercentrage(this.character.energy);
+      }
+    }
+  }
+
+  updateAmmoBar() {
     setInterval(() => {
-      this.level.coin.forEach((coin) => {
-        if (this.character.isColliding(coin)) {
-          coin.getItems();
-          console.log("Coins collected: ", coin.items);
+      for (let i = this.level.ammo.length - 1; i >= 0; i--) {
+        const ammoPickup = this.level.ammo[i];
+
+        if (this.character.isColliding(ammoPickup)) {
+          this.level.ammo.splice(i, 1);
+          this.character.getItems();
+
+          const ammoPercent = this.character.items * 20;
+
+          this.ammoBar.setStack(ammoPercent);
+
+          console.log("Ammo collected:", this.character.items);
         }
-        for (let i = this.level.coin.length - 1; i >= 0; i--) {
-          const coin = this.level.coin[i];
-          if (this.character.isColliding(coin)) {
-            this.level.coin.splice(i, 1);
-          }
-        }
-      });
+      }
     }, 100);
+  }
 
+  updateCoinBar() {
     setInterval(() => {
-      this.level.bottels.forEach((bottel) => {
-        if (this.character.isColliding(bottel)) {
-          bottel.getItems();
-          console.log("Bottels collected: ", bottel.items);
+      for (let i = this.level.coin.length - 1; i >= 0; i--) {
+        const coin = this.level.coin[i];
+
+        if (this.character.isColliding(coin)) {
+          this.level.coin.splice(i, 1);
+
+          this.character.addCoin();
+
+          const coinPercent = this.character.coins * 20;
+          this.coinBar.setStack(coinPercent);
+
+          console.log("Coins collected: ", this.character.coins);
         }
-        for (let i = this.level.bottels.length - 1; i >= 0; i--) {
-          const bottel = this.level.bottels[i];
-          if (this.character.isColliding(bottel)) {
-            this.level.bottels.splice(i, 1);
-          }
-        }
-      });
+      }
     }, 100);
   }
 
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.renderWorldScene();
+    let self = this;
+    requestAnimationFrame(() => self.draw());
+  }
 
+  renderWorldScene() {
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.level.backgroundObjects);
-    this.addObjectsToMap(this.level.clouds);
-
+    this.renderStatusBars();
+    this.drawWorldActors();
+    this.addLevelObjectsToMap();
     this.ctx.translate(-this.camera_x, 0);
-    this.addToMap(this.bottleBar);
+  }
+
+  drawWorldActors() {
+    this.addToMap(this.character);
+    this.addObjectsToMap(this.level.enemies);
+  }
+
+  addLevelObjectsToMap() {
+    this.addObjectsToMap(this.level.coin);
+    this.addObjectsToMap(this.level.ammo);
+    this.addObjectsToMap(this.level.ambient);
+    this.addObjectsToMap(this.throwableObjects);
+  }
+  renderStatusBars() {
+    this.ctx.translate(-this.camera_x, 0);
+    this.addToMap(this.ammoBar);
     this.addToMap(this.healthBar);
     this.addToMap(this.coinBar);
     this.ctx.translate(this.camera_x, 0);
-
-    this.addToMap(this.character);
-    this.addObjectsToMap(this.level.enemies);
-    this.addObjectsToMap(this.level.coin);
-    this.addObjectsToMap(this.level.bottels);
-    this.addObjectsToMap(this.throwableObjects);
-    this.ctx.translate(-this.camera_x, 0);
-
-    let self = this;
-    requestAnimationFrame(() => self.draw());
   }
 
   addObjectsToMap(object) {
@@ -142,6 +165,7 @@ class World {
       this.flipImageBack(movableObject);
     }
   }
+
   flipImage(movableObject) {
     this.ctx.save();
     this.ctx.translate(movableObject.width, 0);

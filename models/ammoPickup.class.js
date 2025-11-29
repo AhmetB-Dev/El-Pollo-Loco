@@ -6,8 +6,8 @@ class AmmoPickup extends MovableObject {
     bottom: 25,
   };
 
-  height = 90;
-  width = 85;
+  height = 100;
+  width = 40;
 
   constructor(imagePath, x, y) {
     super().loadImage(imagePath);

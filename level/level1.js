@@ -70,6 +70,6 @@ const level1 = new Level(
     new BackgroundObject("assets/assets_sharkie/3. Background/Layers/2. Floor/L2.png", 719 * 5, 0),
   ],
 
-  // 3) Clouds
+ 
   [new AmbientObject(0, 0), new AmbientObject(720, 0)]
 );
