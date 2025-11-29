@@ -59,6 +59,8 @@ const level1 = new Level(
 
     new BackgroundObject("assets/assets_sharkie/3. Background/Barrier/1.png", 900 * 2, 0),
 
+    new BackgroundObject("assets/assets_sharkie/3. Background/Barrier/3.png", 900 * 2, 0, 23, 23),
+
     new BackgroundObject("assets/assets_sharkie/3. Background/Layers/5. Water/L1.png", 719 * 4, 0),
     new BackgroundObject("assets/assets_sharkie/3. Background/Layers/4.Fondo 2/L1.png", 719 * 4, 0),
     new BackgroundObject("assets/assets_sharkie/3. Background/Layers/3.Fondo 1/L1.png", 719 * 4, 0),
@@ -70,6 +72,5 @@ const level1 = new Level(
     new BackgroundObject("assets/assets_sharkie/3. Background/Layers/2. Floor/L2.png", 719 * 5, 0),
   ],
 
- 
   [new AmbientObject(0, 0), new AmbientObject(720, 0)]
 );

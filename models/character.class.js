@@ -1,10 +1,10 @@
 class Character extends MovableObject {
   world;
-  coins = 0;
-  speed = 60; // 23 ursprunglich
   height = 270;
   width = 140;
   y = 155;
+  speed = 60; // 23 ursprunglich
+  coins = 0;
   lastActionTime = Date.now();
   delay = 3000;
   longIdlePlayed = false;
@@ -239,11 +239,6 @@ class Character extends MovableObject {
     }, 1000 / 10);
   }
 
-  addCoin() {
-    this.coins++;
-    if (this.coins > 5) this.coins = 5;
-  }
-
   startWalkAnimation() {
     this.walkRight();
     this.walkLeft();
@@ -291,5 +286,10 @@ class Character extends MovableObject {
         this.playAnimation(this.IMAGES_DEAD_ANI1);
       }
     }, 300);
+  }
+
+  addCoin() {
+    this.coins++;
+    if (this.coins > 5) this.coins = 5;
   }
 }
