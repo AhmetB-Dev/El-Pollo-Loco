@@ -5,6 +5,10 @@ class Character extends MovableObject {
   height = 270;
   width = 140;
   y = 155;
+  lastActionTime = Date.now();
+  delay = 3000;
+  longIdlePlayed = false;
+  longIdleFrame = 0;
 
   offset = {
     top: 130,
@@ -146,6 +150,18 @@ class Character extends MovableObject {
     this.animation();
   }
 
+  isPlayerActive() {
+    const input = this.world.input;
+    return input.RIGHT || input.LEFT || input.UP || input.DOWN || input.SPACE || input.THROW;
+  }
+  playLongIdleTail() {
+    const frames = this.IMAGES_LONG_IDLE;
+    const startIndex = Math.max(frames.length - 4, 0);
+    const tailFrames = frames.slice(startIndex);
+
+    this.playAnimation(tailFrames);
+  }
+
   loadAssets() {
     this.animationImage(this.IMAGES_IDLE);
     this.animationImage(this.IMAGES_LONG_IDLE);
@@ -157,32 +173,75 @@ class Character extends MovableObject {
   }
 
   animation() {
-    this.startIdleAnimation();
-    // this.startLongIdleAnimation();
     this.startWalkAnimation();
     this.startJumpAnimation();
-    this.startHurtAnimation();
-    this.startDeadAnimation();
+    this.startAnimationLoop();
   }
+  playLongIdleOnce() {
+    const frames = this.IMAGES_LONG_IDLE;
 
-  startIdleAnimation() {
+    if (this.longIdleFrame < 0 || this.longIdleFrame >= frames.length) {
+      this.longIdleFrame = 0;
+    }
+
+    const path = frames[this.longIdleFrame];
+    this.img = this.imageCache[path];
+
+    if (this.longIdleFrame < frames.length - 1) {
+      this.longIdleFrame++;
+    } else {
+      this.longIdlePlayed = true;
+    }
+  }
+  startAnimationLoop() {
     setInterval(() => {
-      this.playAnimation(this.IMAGES_IDLE);
-    }, 780);
-  }
+      const now = Date.now();
 
-  // startLongIdleAnimation() {
-  //   setInterval(() => {
-  //     let i = this.currentImage % this.IMAGES_LONG_IDLE.length;
-  //     let path = this.IMAGES_LONG_IDLE[i];
-  //     this.img = this.imageCache[path];
-  //     this.currentImage++;
-  //   }, 780);
-  // }
+      if (this.isPlayerActive()) {
+        this.lastActionTime = now;
+        this.longIdlePlayed = false;
+        this.longIdleFrame = 0;
+      }
+
+      const idleTime = now - this.lastActionTime;
+
+      if (this.dead()) {
+        this.playAnimation(this.IMAGES_DEAD_ANI1);
+        return;
+      }
+
+      if (this.hitHurt()) {
+        this.playAnimation(this.IMAGES_HURT_ANI1);
+        return;
+      }
+
+      if (this.world.input.UP && !this.isAboveGround()) {
+        this.playAnimation(this.IMAGES_WALK);
+        return;
+      }
+
+      if (this.world.input.RIGHT || this.world.input.LEFT) {
+        this.playAnimation(this.IMAGES_WALK);
+        return;
+      }
+
+      if (idleTime > this.delay && !this.longIdlePlayed) {
+        this.playLongIdleOnce();
+        return;
+      }
+
+      if (idleTime > this.delay && this.longIdlePlayed) {
+        this.playLongIdleTail();
+        return;
+      }
+
+      this.playAnimation(this.IMAGES_IDLE);
+    }, 1000 / 10);
+  }
 
   addCoin() {
     this.coins++;
-    if (this.coins > 5) this.coins = 5; 
+    if (this.coins > 5) this.coins = 5;
   }
 
   startWalkAnimation() {
@@ -195,7 +254,6 @@ class Character extends MovableObject {
       if (this.world.input.LEFT && this.x > 0) {
         this.x -= this.speed;
         this.otherDirection = true;
-        this.playAnimation(this.IMAGES_WALK);
       }
       this.world.camera_x = -this.x + 100;
     }, 70);
@@ -206,7 +264,6 @@ class Character extends MovableObject {
       if (this.world.input.RIGHT && this.x < this.world.level.level_end) {
         this.x += this.speed;
         this.otherDirection = false;
-        this.playAnimation(this.IMAGES_WALK);
       }
       this.world.camera_x = -this.x;
     }, 70);
@@ -214,9 +271,6 @@ class Character extends MovableObject {
 
   startJumpAnimation() {
     setInterval(() => {
-      if (this.world.input.UP) {
-        this.playAnimation(this.IMAGES_WALK);
-      }
       if (this.world.input.UP && !this.isAboveGround()) {
         this.setJumpHeight();
       }
@@ -235,9 +289,7 @@ class Character extends MovableObject {
     setInterval(() => {
       if (this.dead()) {
         this.playAnimation(this.IMAGES_DEAD_ANI1);
-      } //  else if (this.hitHurt()) {
-      //   this.playAnimation(this.IMAGES_HURT);
-      // }
+      }
     }, 300);
   }
 }
