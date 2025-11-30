@@ -62,6 +62,12 @@ class World {
         enemy.updateAI(this.character);
       }
     }
+
+    for (const enemy of this.level.enemies) {
+      if (enemy instanceof Enemy_Variant01 && !enemy.isDead) {
+        enemy.updateAI(this.character);
+      }
+    }
   }
 
   checkThrowableObjects() {
@@ -98,6 +104,7 @@ class World {
   updateHealthBar() {
     for (let i = this.level.enemies.length - 1; i >= 0; i--) {
       const enemy = this.level.enemies[i];
+
       if (enemy.isDead) {
         if (this.character.isColliding(enemy)) {
           this.level.enemies.splice(i, 1);
@@ -106,6 +113,11 @@ class World {
       }
 
       if (this.character.isColliding(enemy)) {
+        if (enemy instanceof Enemy_Variant01 && this.input.ATA2) {
+          enemy.die();
+          continue;
+        }
+
         this.character.hit();
         this.healthBar.setPercentrage(this.character.energy);
       }

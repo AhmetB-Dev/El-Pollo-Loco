@@ -10,7 +10,7 @@ class Character extends MovableObject {
   longIdlePlayed = false;
   longIdleFrame = 0;
 
-  attack1ready = true;
+  attack1Ready = true;
   ultimateReady = true;
 
   offset = {
@@ -313,6 +313,10 @@ class Character extends MovableObject {
         return;
       } else {
         this.attack1Ready = true;
+      }
+      if (this.world.input.ATA2) {
+        this.playAnimation(this.IMAGES_ATTACK_ANI2);
+        return;
       }
 
       if (idleTime > this.delay && !this.longIdlePlayed) {

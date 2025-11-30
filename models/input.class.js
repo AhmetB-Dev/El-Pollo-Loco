@@ -30,7 +30,7 @@ window.addEventListener("keydown", (e) => {
     input.DOWN = true;
   }
   if (e.keyCode == 32) {
-    input.SPACE = true;
+    input.ATA2 = true;
   }
 
   if (e.keyCode == 70) {
@@ -68,7 +68,7 @@ window.addEventListener("keyup", (e) => {
     input.DOWN = false;
   }
   if (e.keyCode == 32) {
-    input.SPACE = false;
+    input.ATA2 = false;
   }
   if (e.keyCode == 70) {
     input.THROW = false;
