@@ -7,13 +7,20 @@ class Input extends MovableObject {
   THROW = false;
   ATA1 = false;
   ATA2 = false;
+  ULTIMATE = false;
 }
 
 window.addEventListener("keydown", (e) => {
   if (e.keyCode == 68) {
     input.RIGHT = true;
   }
+  if (e.keyCode == 39) {
+    input.RIGHT = true;
+  }
   if (e.keyCode == 65) {
+    input.LEFT = true;
+  }
+  if (e.keyCode == 37) {
     input.LEFT = true;
   }
   if (e.keyCode == 87) {
@@ -35,14 +42,23 @@ window.addEventListener("keydown", (e) => {
   if (e.keyCode == 72) {
     input.ATA2 = true;
   }
-  // console.log(e);
+  if (e.keyCode == 16) {
+    input.ULTIMATE = true;
+  }
+  console.log(e);
 });
 
 window.addEventListener("keyup", (e) => {
   if (e.keyCode == 68) {
     input.RIGHT = false;
   }
+  if (e.keyCode == 39) {
+    input.RIGHT = false;
+  }
   if (e.keyCode == 65) {
+    input.LEFT = false;
+  }
+  if (e.keyCode == 37) {
     input.LEFT = false;
   }
   if (e.keyCode == 87) {
@@ -64,6 +80,8 @@ window.addEventListener("keyup", (e) => {
   if (e.keyCode == 72) {
     input.ATA2 = false;
   }
-
-  // console.log(e);
+  if (e.keyCode == 16) {
+    input.ULTIMATE = false;
+  }
+  console.log(e);
 });
