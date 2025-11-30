@@ -96,10 +96,6 @@ class Character extends MovableObject {
     "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png",
     "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png",
     "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png",
-    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y1.png",
-    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y2.png",
-    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y3.png",
-    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y4.png",
   ];
 
   IMAGES_ATTACK_ANI2 = [
@@ -280,9 +276,17 @@ class Character extends MovableObject {
       if (this.world.input.ULTIMATE) {
         this.playAnimation(this.IMAGES_UTLIMATE_ATTACK);
 
-        if (this.ultimateReady) {
+        const frames = this.IMAGES_UTLIMATE_ATTACK;
+        const currentFrameIndex = (this.currentImage - 1) % frames.length;
+        const lastFrameIndex = frames.length - 1;
+
+        if (currentFrameIndex === lastFrameIndex && this.ultimateReady) {
           this.shootUltimateBubble();
           this.ultimateReady = false;
+        }
+
+        if (currentFrameIndex !== lastFrameIndex) {
+          this.ultimateReady = true;
         }
 
         return;
@@ -290,24 +294,26 @@ class Character extends MovableObject {
         this.ultimateReady = true;
       }
 
-      if (this.world.input.ATA2) {
-        this.playAnimation(this.IMAGES_ATTACK_ANI2);
-        return;
-      }
-
       if (this.world.input.ATA1) {
         this.playAnimation(this.IMAGES_ATTACK_ANI1);
 
-        if (this.attack1Ready) {
+        const frames = this.IMAGES_ATTACK_ANI1;
+        const currentFrameIndex = (this.currentImage - 1) % frames.length;
+        const lastFrameIndex = frames.length - 1;
+
+        if (currentFrameIndex === lastFrameIndex && this.attack1Ready) {
           this.shootAttack1Bubble();
           this.attack1Ready = false;
+        }
+
+        if (currentFrameIndex !== lastFrameIndex) {
+          this.attack1Ready = true;
         }
 
         return;
       } else {
         this.attack1Ready = true;
       }
-
 
       if (idleTime > this.delay && !this.longIdlePlayed) {
         this.playLongIdleOnce();
@@ -322,33 +328,6 @@ class Character extends MovableObject {
       this.playAnimation(this.IMAGES_IDLE);
     }, 1000 / 10);
   }
-
-  // animationAttack1() {
-  //   setInterval(() => {
-  //     if (this.world.input.ATA1) {
-  //       this.playAnimation(this.IMAGES_ATTACK_ANI1);
-  //       return;
-  //     }
-  //   }, 1000 / 10);
-  // }
-
-  // animationAttack2() {
-  //   setInterval(() => {
-  //     if (this.world.input.ATA2) {
-  //       this.playAnimation(this.IMAGES_ATTACK_ANI2);
-  //       return;
-  //     }
-  //   }, 1000 / 10);
-  // }
-
-  // animationUltimateAttack() {
-  //   setInterval(() => {
-  //     if (this.world.input.ULTIMATE) {
-  //       this.playAnimation(this.IMAGES_UTLIMATE_ATTACK);
-  //       return;
-  //     }
-  //   }, 1000 / 10);
-  // }
 
   startWalkAnimation() {
     this.walkRight();
