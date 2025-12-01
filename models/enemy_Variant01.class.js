@@ -6,6 +6,9 @@ class Enemy_Variant01 extends MovableObject {
   isDead = false;
   isAttacking = false;
 
+  deathAnimationDone = false;
+  deathFrame = 0;
+
   ENEMIES_WALK = [
     "assets/assets_sharkie/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim1.png",
     "assets/assets_sharkie/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim3.png",
@@ -31,9 +34,12 @@ class Enemy_Variant01 extends MovableObject {
   constructor() {
     super().loadImage("assets/assets_sharkie/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim1.png");
     this.loadAssets();
-    this.animationChicken();
+    this.groundY = 300;
     this.spawnChickenRandom();
     this.chickenSpeed();
+    this.otherDirection = true;
+    this.startPatrol(300);
+    this.animationChicken();
   }
 
   loadAssets() {
@@ -48,13 +54,21 @@ class Enemy_Variant01 extends MovableObject {
   }
 
   die() {
+    if (this.isDead) return;
     this.isDead = true;
     this.speed = 0;
     this.currentImage = 0;
+    this.deathFrame = 0;
+    this.deathAnimationDone = false;
   }
 
   spawnChickenRandom() {
-    this.x = 300 + Math.random() * 700;
+    const minX = 600;
+    const maxX = 1800;
+    this.x = minX + Math.random() * (maxX - minX);
+    const minY = 150;
+    const maxY = 300;
+    this.y = minY + Math.random() * (maxY - minY);
   }
 
   chickenSpeed() {
@@ -66,13 +80,9 @@ class Enemy_Variant01 extends MovableObject {
     const dy = character.y - this.y;
     const distance = Math.sqrt(dx * dx + dy * dy);
     this.isAttacking = distance < 250;
-
-    this.otherDirection = character.x > this.x;
   }
 
   animationChickenWalk() {
-    this.moveLeft();
-    // this.moveRight();
     setInterval(() => {
       if (this.isDead) {
         return;
@@ -88,9 +98,24 @@ class Enemy_Variant01 extends MovableObject {
 
   animationChickenDead() {
     setInterval(() => {
-      if (this.isDead) {
-        this.playAnimation(this.ENEMIES_DEAD);
+      if (!this.isDead || this.deathAnimationDone) {
+        return;
       }
+      const frames = this.ENEMIES_DEAD;
+      if (!frames || frames.length === 0) {
+        return;
+      }
+      if (this.deathFrame < 0 || this.deathFrame >= frames.length) {
+        this.deathFrame = frames.length - 1;
+      }
+      const path = frames[this.deathFrame];
+      this.img = this.imageCache[path];
+      if (this.deathFrame < frames.length - 1) {
+        this.deathFrame++;
+      } else {
+        this.deathAnimationDone = true;
+      }
+      this.applyGravity();
     }, 175);
   }
 }

@@ -1,12 +1,18 @@
 class MovableObject extends DrawableObject {
   speed = 0.15;
-  otherDiretion = false;
+  otherDirection = false;
   speedY = 0;
   acceleration = 2.5;
   energy = 100;
   lastHit = 0;
   items = 0;
-
+  groundY = 155;
+  offset = {
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  };
   isColliding(mo) {
     return (
       this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
@@ -28,7 +34,7 @@ class MovableObject extends DrawableObject {
   hitHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
-    return timepassed < 1.5;
+    return timepassed < 1;
   }
 
   getItems() {
@@ -55,7 +61,7 @@ class MovableObject extends DrawableObject {
     if (this instanceof ThrowableObject) {
       return true;
     } else {
-      return this.y < 155;
+      return this.y < this.groundY;
     }
   }
 
@@ -82,10 +88,25 @@ class MovableObject extends DrawableObject {
     }, 1000 / 60);
   }
 
-  offset = {
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  };
+  startPatrol(range = 200) {
+    this.patrolOriginX = this.x;
+    this.patrolRangeX = range;
+    this.patrolDirectionX = -1;
+
+    setInterval(() => {
+      if (this.isDead) return;
+
+      this.x += this.patrolDirectionX * this.speed;
+
+      if (this.x < this.patrolOriginX - this.patrolRangeX) {
+        this.patrolDirectionX = 1;
+        this.otherDirection = false;
+      }
+
+      if (this.x > this.patrolOriginX + this.patrolRangeX) {
+        this.patrolDirectionX = -1;
+        this.otherDirection = true;
+      }
+    }, 1000 / 60);
+  }
 }

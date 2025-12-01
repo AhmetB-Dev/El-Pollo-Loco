@@ -70,21 +70,29 @@ class Boss extends MovableObject {
     this.animationBoss();
     this.bossSpeed();
 
-    this.x = 3800; // 3400 trigger  boss sequenz
+    this.x = 4500;
   }
 
   loadAssets() {
     this.animationImage(this.ENEMIES_WALK);
     this.animationImage(this.ENEMIES_DEAD);
+    this.animationImage(this.ENEMIES_ALERT);
   }
 
   animationBoss() {
     this.animationBossWalk();
     this.animationBossDead();
+    this.animationBossAlert();
   }
 
   bossSpeed() {
     this.speed = 0.8 + Math.random() * 1.5;
+  }
+
+  animationBossAlert() {
+    setInterval(() => {
+      this.playAnimation(this.ENEMIES_ALERT);
+    });
   }
 
   animationBossWalk() {

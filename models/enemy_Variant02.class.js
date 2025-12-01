@@ -33,6 +33,7 @@ class Enemy_Variant02 extends MovableObject {
     this.animationSmallChicken();
     this.spawnSmallChickenRandom();
     this.smallChickenSpeed();
+    this.startPatrol(250);
   }
 
   loadAssets() {
@@ -47,7 +48,13 @@ class Enemy_Variant02 extends MovableObject {
   }
 
   spawnSmallChickenRandom() {
-    this.x = 300 + Math.random() * 800;
+    const minX = 1800;
+    const maxX = 2600;
+    this.x = minX + Math.random() * (maxX - minX);
+
+    const minY = 150;
+    const maxY = 300;
+    this.y = minY + Math.random() * (maxY - minY);
   }
 
   smallChickenSpeed() {
@@ -72,8 +79,6 @@ class Enemy_Variant02 extends MovableObject {
   }
 
   animationSmallChickenWalk() {
-    this.moveLeft();
-
     setInterval(() => {
       if (this.isDead) {
         return;

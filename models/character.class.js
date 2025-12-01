@@ -12,6 +12,7 @@ class Character extends MovableObject {
 
   attack1Ready = true;
   ultimateReady = true;
+  hitRange = false;
 
   offset = {
     top: 130,
@@ -151,11 +152,14 @@ class Character extends MovableObject {
 
   constructor() {
     super().loadImage("assets/assets_sharkie/1.Sharkie/1.IDLE/1.png");
+
+    this.groundY = 155;
+    this.y = this.groundY;
+
     this.loadAssets();
     this.applyGravity();
     this.animation();
   }
-
   loadAssets() {
     this.animationImage(this.IMAGES_IDLE);
     this.animationImage(this.IMAGES_LONG_IDLE);
@@ -316,7 +320,10 @@ class Character extends MovableObject {
       }
       if (this.world.input.ATA2) {
         this.playAnimation(this.IMAGES_ATTACK_ANI2);
+        this.hitRange = true;
         return;
+      } else {
+        this.hitRange = false;
       }
 
       if (idleTime > this.delay && !this.longIdlePlayed) {
@@ -385,5 +392,26 @@ class Character extends MovableObject {
   addCoin() {
     this.coins++;
     if (this.coins > 5) this.coins = 5;
+  }
+
+  hitmakerRange(enemy) {
+    if (!this.hitRange) return false;
+    const charCenterX = this.x + this.width / 2;
+    const charCenterY = this.y + this.height / 2;
+    const enemyCenterX = enemy.x + enemy.width / 2;
+    const enemyCenterY = enemy.y + enemy.height / 2;
+
+    const dx = enemyCenterX - charCenterX;
+    const dy = enemyCenterY - charCenterY;
+
+    const facingRight = !this.otherDirection;
+
+    if (facingRight && dx <= 0) return false;
+    if (!facingRight && dx >= 0) return false;
+
+    const maxHorizontal = this.width * 0.9;
+    const maxVertical = this.height * 0.7;
+
+    return Math.abs(dx) < maxHorizontal && Math.abs(dy) < maxVertical;
   }
 }
