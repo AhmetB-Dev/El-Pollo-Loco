@@ -1,21 +1,6 @@
 class ThrowableObject extends MovableObject {
-  IMAGE_SHOOT = [
-    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/1.png",
-    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/2.png",
-    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/3.png",
-    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/4.png",
-    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/5.png",
-    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png",
-    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png",
-    "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png",
-  ];
-
-  IMAGES_SHOOTBALL = [
-    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y1.png",
-    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y2.png",
-    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y3.png",
-    "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y4.png",
-  ];
+  IMAGE_SHOOT = CharacterAssets.IMAGE_SHOOT;
+  IMAGES_SHOOTBALL = CharacterAssets.IMAGES_SHOOTBALL;
 
   constructor(x, y) {
     super();

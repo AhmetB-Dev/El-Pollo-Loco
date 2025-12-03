@@ -2,8 +2,6 @@ class Input extends MovableObject {
   LEFT = false;
   RIGHT = false;
   UP = false;
-  DOWN = false;
-  SPACE = false;
   THROW = false;
   ATA1 = false;
   ATA2 = false;
@@ -11,77 +9,63 @@ class Input extends MovableObject {
 }
 
 window.addEventListener("keydown", (e) => {
-  if (e.keyCode == 68) {
+  const key = e.key;
+  const k = key.toLowerCase();
+
+  if (k === "d" || k === "arrowright") {
     input.RIGHT = true;
   }
-  if (e.keyCode == 39) {
-    input.RIGHT = true;
-  }
-  if (e.keyCode == 65) {
+
+  if (k === "a" || k === "arrowleft") {
     input.LEFT = true;
   }
-  if (e.keyCode == 37) {
-    input.LEFT = true;
-  }
-  if (e.keyCode == 87) {
+
+  if (k === "w" || k === "arrowup") {
     input.UP = true;
   }
-  if (e.keyCode == 83) {
-    input.DOWN = true;
+
+  if (k === "k" || k === "x") {
+    input.ATA1 = true;
   }
-  if (e.keyCode == 32) {
+
+  if (k === "j" || k === "y" || key === "z") {
     input.ATA2 = true;
   }
 
-  if (e.keyCode == 70) {
-    input.THROW = true;
-  }
-  if (e.keyCode == 71) {
-    input.ATA1 = true;
-  }
-  if (e.keyCode == 72) {
-    input.ATA2 = true;
-  }
-  if (e.keyCode == 16) {
+  if (k === "l" || k === "c") {
     input.ULTIMATE = true;
   }
+
   console.log(e);
 });
 
 window.addEventListener("keyup", (e) => {
-  if (e.keyCode == 68) {
+  const key = e.key;
+  const k = key.toLowerCase();
+
+  if (k === "d" || k === "arrowright") {
     input.RIGHT = false;
-  }
-  if (e.keyCode == 39) {
-    input.RIGHT = false;
-  }
-  if (e.keyCode == 65) {
-    input.LEFT = false;
-  }
-  if (e.keyCode == 37) {
-    input.LEFT = false;
-  }
-  if (e.keyCode == 87) {
-    input.UP = false;
-  }
-  if (e.keyCode == 83) {
-    input.DOWN = false;
-  }
-  if (e.keyCode == 32) {
-    input.ATA2 = false;
-  }
-  if (e.keyCode == 70) {
-    input.THROW = false;
   }
 
-  if (e.keyCode == 71) {
+  if (k === "a" || k === "arrowleft") {
+    input.LEFT = false;
+  }
+
+  if (k === "w" || k === "arrowup") {
+    input.UP = false;
+  }
+
+  if (k === "k" || k === "x") {
     input.ATA1 = false;
   }
-  if (e.keyCode == 72) {
+
+  if (k === "j" || k === "y" || key === "z") {
     input.ATA2 = false;
   }
-  if (e.keyCode == 16) {
+
+  if (k === "l" || k === "c") {
     input.ULTIMATE = false;
   }
+
   console.log(e);
 });

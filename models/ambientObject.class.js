@@ -4,7 +4,7 @@ class AmbientObject extends MovableObject {
     this.y = y;
     this.x = x;
     this.width = width;
-    this.height - height;
+    this.height = height;
     // this.spawnCloudsRandom();
     // this.animationAmbient();
   }
