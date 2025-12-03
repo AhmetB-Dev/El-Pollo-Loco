@@ -15,6 +15,15 @@ class DrawableObject {
   draw(ctx) {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
+
+  animationImage(array) {
+    array.forEach((path) => {
+      let img = new Image();
+      img.src = path;
+      this.imageCache[path] = img;
+    });
+  }
+
   showHitbox(ctx) {
     if (
       this instanceof Character ||
@@ -27,7 +36,6 @@ class DrawableObject {
       ctx.beginPath();
       ctx.lineWidth = "3";
       ctx.strokeStyle = "red";
-
       const x = this.x + this.offset.left;
       const y = this.y + this.offset.top;
       const w = this.width - this.offset.left - this.offset.right;
@@ -36,13 +44,5 @@ class DrawableObject {
       ctx.rect(x, y, w, h);
       ctx.stroke();
     }
-  }
-
-  animationImage(array) {
-    array.forEach((path) => {
-      let img = new Image();
-      img.src = path;
-      this.imageCache[path] = img;
-    });
   }
 }

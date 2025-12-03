@@ -13,6 +13,7 @@ class MovableObject extends DrawableObject {
     right: 0,
     bottom: 0,
   };
+
   isColliding(mo) {
     return (
       this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
@@ -87,7 +88,7 @@ class MovableObject extends DrawableObject {
       this.x -= this.speed;
     }, 1000 / 60);
   }
-  
+
   startPatrol(range = 200) {
     this.patrolOriginX = this.x;
     this.patrolRangeX = range;

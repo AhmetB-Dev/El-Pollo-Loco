@@ -30,9 +30,9 @@ class Enemy_Variant02 extends MovableObject {
   constructor() {
     super().loadImage("assets/assets_sharkie/2.Enemy/2 Jelly fish/Regular damage/Yellow 1.png");
     this.loadAssets();
-    this.animationSmallChicken();
-    this.spawnSmallChickenRandom();
-    this.smallChickenSpeed();
+    this.animationTyp2();
+    this.spawnTyp2Random();
+    this.enemySpeedTyp2();
     this.startPatrol(250);
   }
 
@@ -42,12 +42,12 @@ class Enemy_Variant02 extends MovableObject {
     this.animationImage(this.ENEMIES_DEAD);
   }
 
-  animationSmallChicken() {
-    this.animationSmallChickenWalk();
-    this.animationSmallChickenDead();
+  animationTyp2() {
+    this.animationWalktyp2();
+    this.animationDeadtyp2();
   }
 
-  spawnSmallChickenRandom() {
+  spawnTyp2Random() {
     const minX = 1800;
     const maxX = 2600;
     this.x = minX + Math.random() * (maxX - minX);
@@ -57,7 +57,7 @@ class Enemy_Variant02 extends MovableObject {
     this.y = minY + Math.random() * (maxY - minY);
   }
 
-  smallChickenSpeed() {
+  enemySpeedTyp2() {
     this.speed = 0.8 + Math.random() * 1.5;
   }
 
@@ -75,7 +75,7 @@ class Enemy_Variant02 extends MovableObject {
     this.isAttacking = distance < 250;
   }
 
-  animationSmallChickenWalk() {
+  animationWalktyp2() {
     setInterval(() => {
       if (this.isDead) {
         return;
@@ -89,7 +89,7 @@ class Enemy_Variant02 extends MovableObject {
     }, 175);
   }
 
-  animationSmallChickenDead() {
+  animationDeadtyp2() {
     setInterval(() => {
       if (this.isDead) {
         this.playAnimation(this.ENEMIES_DEAD);

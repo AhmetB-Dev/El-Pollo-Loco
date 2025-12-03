@@ -35,11 +35,11 @@ class Enemy_Variant01 extends MovableObject {
     super().loadImage("assets/assets_sharkie/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim1.png");
     this.loadAssets();
     this.groundY = 300;
-    this.spawnChickenRandom();
-    this.chickenSpeed();
+    this.spawnRandomTyp1();
+    this.enemySpeedTyp1();
     this.otherDirection = true;
     this.startPatrol(300);
-    this.animationChicken();
+    this.animationTyp1();
   }
 
   loadAssets() {
@@ -48,9 +48,9 @@ class Enemy_Variant01 extends MovableObject {
     this.animationImage(this.ENEMIES_DEAD);
   }
 
-  animationChicken() {
-    this.animationChickenWalk();
-    this.animationChickenDead();
+  animationTyp1() {
+    this.animationWalkTyp1();
+    this.animationDeadTyp1();
   }
 
   die() {
@@ -62,7 +62,7 @@ class Enemy_Variant01 extends MovableObject {
     this.deathAnimationDone = false;
   }
 
-  spawnChickenRandom() {
+  spawnRandomTyp1() {
     const minX = 600;
     const maxX = 1800;
     this.x = minX + Math.random() * (maxX - minX);
@@ -71,9 +71,10 @@ class Enemy_Variant01 extends MovableObject {
     this.y = minY + Math.random() * (maxY - minY);
   }
 
-  chickenSpeed() {
+  enemySpeedTyp1() {
     this.speed = 0.8 + Math.random() * 1.5;
   }
+
   updateAI(character) {
     const dx = character.x - this.x;
     const dy = character.y - this.y;
@@ -83,7 +84,7 @@ class Enemy_Variant01 extends MovableObject {
     this.otherDirection = character.x < this.x;
   }
 
-  animationChickenWalk() {
+  animationWalkTyp1() {
     setInterval(() => {
       if (this.isDead) {
         return;
@@ -97,7 +98,7 @@ class Enemy_Variant01 extends MovableObject {
     }, 175);
   }
 
-  animationChickenDead() {
+  animationDeadTyp1() {
     setInterval(() => {
       if (!this.isDead || this.deathAnimationDone) {
         return;

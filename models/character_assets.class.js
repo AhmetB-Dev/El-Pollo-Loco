@@ -125,18 +125,6 @@ class CharacterAssets {
     "assets/assets_sharkie/1.Sharkie/6.dead/2.Electro_shock/10.png",
   ];
 
-  //   static IMAGE_SHOOT = [
-  //     // delete this later
-  //     "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/1.png",
-  //     "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/2.png",
-  //     "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/3.png",
-  //     "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/4.png",
-  //     "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/5.png",
-  //     "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png",
-  //     "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png",
-  //     "assets/assets_sharkie/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png",
-  //   ];
-
   static IMAGES_SHOOTBALL = [
     "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y1.png",
     "assets/assets_sharkie/2.Enemy/2 Jelly fish/Dead/Yellow/y2.png",

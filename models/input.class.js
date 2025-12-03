@@ -36,7 +36,7 @@ window.addEventListener("keydown", (e) => {
     input.ULTIMATE = true;
   }
 
-  console.log(e);
+  // console.log(e);
 });
 
 window.addEventListener("keyup", (e) => {
@@ -67,5 +67,5 @@ window.addEventListener("keyup", (e) => {
     input.ULTIMATE = false;
   }
 
-  console.log(e);
+  // console.log(e);
 });
