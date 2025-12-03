@@ -87,7 +87,7 @@ class MovableObject extends DrawableObject {
       this.x -= this.speed;
     }, 1000 / 60);
   }
-
+  
   startPatrol(range = 200) {
     this.patrolOriginX = this.x;
     this.patrolRangeX = range;
@@ -100,12 +100,10 @@ class MovableObject extends DrawableObject {
 
       if (this.x < this.patrolOriginX - this.patrolRangeX) {
         this.patrolDirectionX = 1;
-        this.otherDirection = false;
       }
 
       if (this.x > this.patrolOriginX + this.patrolRangeX) {
         this.patrolDirectionX = -1;
-        this.otherDirection = true;
       }
     }, 1000 / 60);
   }

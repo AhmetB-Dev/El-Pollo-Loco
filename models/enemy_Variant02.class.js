@@ -72,10 +72,7 @@ class Enemy_Variant02 extends MovableObject {
     const dx = character.x - this.x;
     const dy = character.y - this.y;
     const distance = Math.sqrt(dx * dx + dy * dy);
-
     this.isAttacking = distance < 250;
-
-    this.otherDirection = character.x < this.x;
   }
 
   animationSmallChickenWalk() {

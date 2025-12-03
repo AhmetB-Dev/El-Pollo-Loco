@@ -2,6 +2,7 @@ class Boss extends MovableObject {
   height = 400;
   width = 250;
   y = 60;
+  triggerIntro = 4200;
 
   offset = {
     top: 135,
@@ -9,6 +10,15 @@ class Boss extends MovableObject {
     right: 15,
     bottom: 50,
   };
+
+  introPlayed = false;
+  introFrame = 0;
+  playerInRange = false;
+
+  isActive = false;
+  chaseSpeedFactor = 4;
+  isAttacking = false;
+  attackRange = 150;
 
   ENEMIES_WALK = [
     "assets/assets_sharkie/2.Enemy/3 Final Enemy/2.floating/1.png",
@@ -26,7 +36,7 @@ class Boss extends MovableObject {
     "assets/assets_sharkie/2.Enemy/3 Final Enemy/2.floating/13.png",
   ];
 
-  ENEMIES_ALERT = [
+  ENEMIES_INTRODUCE = [
     "assets/assets_sharkie/2.Enemy/3 Final Enemy/1.Introduce/1.png",
     "assets/assets_sharkie/2.Enemy/3 Final Enemy/1.Introduce/2.png",
     "assets/assets_sharkie/2.Enemy/3 Final Enemy/1.Introduce/3.png",
@@ -74,33 +84,93 @@ class Boss extends MovableObject {
   }
 
   loadAssets() {
+    this.animationImage(this.ENEMIES_INTRODUCE);
     this.animationImage(this.ENEMIES_WALK);
+    this.animationImage(this.ENEMIES_ATTACK);
+    this.animationImage(this.ENEMIES_HURT);
     this.animationImage(this.ENEMIES_DEAD);
-    this.animationImage(this.ENEMIES_ALERT);
-  }
-
-  animationBoss() {
-    this.animationBossWalk();
-    this.animationBossDead();
-    this.animationBossAlert();
   }
 
   bossSpeed() {
-    this.speed = 0.8 + Math.random() * 1.5;
+    this.speed = 0.8 + Math.random() * 5.5;
   }
 
-  animationBossAlert() {
+  followCharacter(character) {
+    const dx = character.x - this.x;
+    const dy = character.y - this.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance === 0) {
+      this.isAttacking = true;
+      return;
+    }
+
+    const nx = dx / distance;
+    const ny = dy / distance;
+    const step = this.speed * this.chaseSpeedFactor;
+
+    if (distance < 5) {
+      this.otherDirection = dx < 0;
+      this.isAttacking = true;
+      return;
+    }
+    this.x += nx * step;
+
+    if (character.y < this.y) {
+      this.y += ny * step;
+    }
+
+    this.otherDirection = dx > 0;
+    this.isAttacking = distance < this.attackRange;
+  }
+
+  animationBoss() {
     setInterval(() => {
-      this.playAnimation(this.ENEMIES_ALERT);
-    });
+      if (!this.isActive) {
+        return;
+      }
+
+      if (this.playerInRange && !this.introPlayed) {
+        this.playIntroOnce();
+        return;
+      }
+
+      if (!this.playerInRange || !this.introPlayed) {
+        return;
+      }
+
+      if (this.isAttacking) {
+        this.playAnimation(this.ENEMIES_ATTACK);
+      } else {
+        this.playAnimation(this.ENEMIES_WALK);
+      }
+    }, 125);
   }
 
-  animationBossWalk() {
-    // this.moveLeft();
-    setInterval(() => {
-      this.playAnimation(this.ENEMIES_WALK);
-    }, 175);
+  playIntroOnce() {
+    const frames = this.ENEMIES_INTRODUCE;
+
+    if (this.introFrame < 0 || this.introFrame >= frames.length) {
+      this.introFrame = 0;
+    }
+
+    const path = frames[this.introFrame];
+    this.img = this.imageCache[path];
+
+    if (this.introFrame < frames.length - 1) {
+      this.introFrame++;
+    } else {
+      this.introPlayed = true;
+    }
   }
 
-  animationBossDead() {}
+  draw(ctx) {
+    if (!this.isActive) return;
+    super.draw(ctx);
+  }
+
+  showHitbox(ctx) {
+    if (!this.isActive) return;
+    super.showHitbox(ctx);
+  }
 }

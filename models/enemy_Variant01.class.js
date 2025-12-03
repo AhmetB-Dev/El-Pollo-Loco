@@ -74,12 +74,13 @@ class Enemy_Variant01 extends MovableObject {
   chickenSpeed() {
     this.speed = 0.8 + Math.random() * 1.5;
   }
-
   updateAI(character) {
     const dx = character.x - this.x;
     const dy = character.y - this.y;
     const distance = Math.sqrt(dx * dx + dy * dy);
     this.isAttacking = distance < 250;
+
+    this.otherDirection = character.x < this.x;
   }
 
   animationChickenWalk() {

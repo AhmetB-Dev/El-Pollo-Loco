@@ -45,6 +45,10 @@ const level1 = new Level(
     new Coin(558 * 5, 192),
     new Coin(558 * 5, 192),
     new Coin(664 * 5, 128),
+
+    new Coin(500 * 6, 300),
+    new Coin(500 * 6, 300),
+    new Coin(558 * 6, 192),
     // assets/assets_sharkie/4. Marcadores/green/100_  copia 3.png
   ],
 
@@ -61,6 +65,9 @@ const level1 = new Level(
     new AmmoPickup("assets/assets_sharkie/4. Marcadores/Posión/Dark - Left.png", 2800, 325),
     new AmmoPickup("assets/assets_sharkie/4. Marcadores/Posión/Dark - Right.png", 3200, 325),
     new AmmoPickup("assets/assets_sharkie/4. Marcadores/Posión/Dark - Right.png", 3600, 325),
+    new AmmoPickup("assets/assets_sharkie/4. Marcadores/Posión/Dark - Left.png", 3800, 325),
+    new AmmoPickup("assets/assets_sharkie/4. Marcadores/Posión/Dark - Right.png", 4000, 325),
+    new AmmoPickup("assets/assets_sharkie/4. Marcadores/Posión/Dark - Right.png", 4200, 325),
   ],
 
   // 2) Background-Objects

@@ -56,6 +56,7 @@ class World {
       this.updateEnemyAI();
     }, 100);
   }
+
   updateEnemyAI() {
     for (const enemy of this.level.enemies) {
       if (enemy instanceof Enemy_Variant02 && !enemy.isDead) {
@@ -66,6 +67,19 @@ class World {
     for (const enemy of this.level.enemies) {
       if (enemy instanceof Enemy_Variant01 && !enemy.isDead) {
         enemy.updateAI(this.character);
+      }
+    }
+
+    for (const enemy of this.level.enemies) {
+      if (!(enemy instanceof Boss)) continue;
+
+      if (!enemy.playerInRange && this.character.x >= enemy.triggerIntro) {
+        enemy.playerInRange = true;
+        enemy.isActive = true;
+      }
+
+      if (enemy.playerInRange && enemy.introPlayed) {
+        enemy.followCharacter(this.character);
       }
     }
   }
